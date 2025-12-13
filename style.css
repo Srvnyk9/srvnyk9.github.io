@@ -14,8 +14,8 @@ body {
   padding: 80px 24px;
 }
 
-/* Hero section (top of the page) */
-.hero h1 {
+/* Top intro section */
+.intro-top h1 {
   font-size: 40px;
   font-weight: 600;
   margin-bottom: 16px;
