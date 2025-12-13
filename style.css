@@ -36,3 +36,26 @@ body {
   color: #3c4043;
   max-width: 720px;
 }
+
+/* Section spacing */
+section {
+  margin-top: 72px;
+}
+
+/* Section headings */
+h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+/* Work list styling */
+.work ul {
+  padding-left: 18px;
+}
+
+.work li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
