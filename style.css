@@ -77,7 +77,7 @@ h2 {
 .intro-top,
 .intro,
 .work {
-  animation: fadeUp 0.6s ease-out forwards;
+  animation: fadeUp 2.5s ease-out forwards;
 }
 
 /* Stagger bullet appearance */
