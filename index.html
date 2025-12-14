@@ -3,52 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sourav — Financial Crime & Trust Systems</title>
+<title>Sourav Nayak — Financial Crime & Trust Systems</title>
 
 <style>
 :root{
   --blue:#0b5cff;
-  --blue-dark:#0a1b3f;
   --green:#1db954;
   --yellow:#f4c430;
   --text:#0b1220;
   --muted:#5b6475;
-  --white:#ffffff;
 }
 
 /* RESET */
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+  font-family:Inter,system-ui,Arial,sans-serif;
   background:#f9fbff;
   color:var(--text);
   overflow-x:hidden;
 }
 
-/* CINEMATIC BACKGROUND */
+/* ===== CINEMATIC BACKGROUND ===== */
 .background{
   position:fixed;
   inset:0;
-  z-index:-1;
+  z-index:-2;
   background:
     radial-gradient(1200px 600px at 20% 10%, rgba(11,92,255,.08), transparent 60%),
     radial-gradient(1000px 500px at 80% 40%, rgba(29,185,84,.06), transparent 60%),
     radial-gradient(900px 500px at 50% 90%, rgba(244,196,48,.05), transparent 60%);
-  animation: drift 40s ease-in-out infinite alternate;
+  animation: drift 45s ease-in-out infinite alternate;
 }
+
+/* SIGNAL LINES */
+.signals{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+}
+.signal{
+  position:absolute;
+  width:2px;
+  height:140%;
+  background:linear-gradient(to bottom, transparent, rgba(11,92,255,.25), transparent);
+  animation: move 18s linear infinite;
+  opacity:.15;
+}
+.signal:nth-child(2){left:30%; animation-duration:22s}
+.signal:nth-child(3){left:55%; animation-duration:26s}
+.signal:nth-child(4){left:75%; animation-duration:20s}
 
 @keyframes drift{
   from{transform:translateY(0)}
   to{transform:translateY(-60px)}
 }
+@keyframes move{
+  from{transform:translateY(-20%)}
+  to{transform:translateY(120%)}
+}
 
-/* LAYOUT */
+/* ===== LAYOUT ===== */
 .container{
   max-width:1200px;
   margin:auto;
-  padding:140px 32px 180px;
+  padding:120px 32px 180px;
 }
+
+/* TOP CONTACT */
+.top-contact{
+  position:fixed;
+  top:24px;
+  right:32px;
+  font-size:15px;
+  color:var(--muted);
+}
+.top-contact a{
+  color:var(--blue);
+  text-decoration:none;
+  margin-left:12px;
+}
+.top-contact a:hover{text-decoration:underline}
 
 /* HERO */
 .hero{
@@ -140,6 +176,29 @@ body{
   to{opacity:1; transform:translateY(0)}
 }
 
+/* PROJECTS (DROPDOWN) */
+.projects{
+  margin-top:180px;
+  max-width:900px;
+}
+.projects h2{
+  font-size:36px;
+  margin-bottom:24px;
+}
+.project{
+  border-top:1px solid #e3e8f2;
+  padding:24px 0;
+}
+.project summary{
+  cursor:pointer;
+  font-size:20px;
+  font-weight:500;
+}
+.project p{
+  margin-top:16px;
+  color:var(--muted);
+}
+
 /* FOOTER */
 .footer{
   margin-top:200px;
@@ -158,11 +217,24 @@ body{
 
 <div class="background"></div>
 
+<div class="signals">
+  <div class="signal" style="left:15%"></div>
+  <div class="signal"></div>
+  <div class="signal"></div>
+  <div class="signal"></div>
+</div>
+
+<div class="top-contact">
+  <a href="mailto:sourav@email.com">Email</a>
+  <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+  <a href="https://github.com/srvnyk9" target="_blank">GitHub</a>
+</div>
+
 <div class="container">
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Sourav</h1>
+  <h1>Sourav Nayak</h1>
   <p>
     I work at the intersection of financial crime, risk, and human decision-making.
     Not as a modeler. Not as a dashboard jockey.
@@ -178,15 +250,12 @@ body{
     Data science is not about predicting the future.
     It’s about understanding behavior deeply enough
     that the future stops surprising us —
-    and stepping in before things go weird, harmful,
-    or quietly wrong.
+    and stepping in before things go weird, harmful, or quietly wrong.
     <br><br>
     Attackers adapt. Signals decay.
     Enforcement must scale — without harming legitimate users.
     <br><br>
-    Behavior first.
-    Signals second.
-    Precision always.
+    Behavior first. Signals second. Precision always.
     <br><br>
     Quietly eliminating dishonesty, waste, and stupidity —
     without lighting the whole platform on fire.
@@ -206,12 +275,23 @@ body{
   <div id="flow" class="flow"></div>
 </section>
 
+<!-- PROJECTS -->
+<section class="projects">
+  <h2>Projects</h2>
+
+  <details class="project">
+    <summary>Example Project Title (add later)</summary>
+    <p>
+      Short description of the problem, approach, and outcome.
+      You can add as many of these as you want later.
+    </p>
+  </details>
+
+</section>
+
 <!-- FOOTER -->
 <div class="footer">
-  Contact:
-  <a href="mailto:sourav@email.com">Email</a> ·
-  <a href="https://linkedin.com" target="_blank">LinkedIn</a> ·
-  <a href="https://github.com/srvnyk9" target="_blank">GitHub</a>
+  © Sourav Nayak · Built with intent, not noise
 </div>
 
 </div>
@@ -235,7 +315,7 @@ const cases=[
 [
 ["STEP 1","Conflict","Risk vs Compliance misalignment."],
 ["STEP 2","Shared Language","Data reframed into common ground."],
-["STEP 3","Trade-offs Made Explicit","Coverage vs harm surfaced."],
+["STEP 3","Trade-offs Exposed","Coverage vs harm surfaced."],
 ["STEP 4","Decision Anchored","Principles over opinions."],
 ["STEP 5","Outcome","Scalable alignment achieved."]
 ]
