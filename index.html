@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sourav | Financial Crime, Risk & Trust Systems</title>
+<title>Sourav | Financial Crime & Trust Systems</title>
 
 <style>
 :root {
-  --bg: #020617;
-  --card: #020617f2;
-  --border: #1e293b;
-  --accent: #6366f1;
-  --text: #e5e7eb;
-  --muted: #c7d2fe;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --blue: #1a73e8;
+  --blue-soft: #e8f0fe;
+  --text: #0f172a;
+  --muted: #475569;
 }
 
 * { box-sizing: border-box; }
@@ -21,136 +22,116 @@ body {
   margin: 0;
   font-family: Inter, system-ui, Arial, sans-serif;
   background:
-    radial-gradient(1000px 500px at 15% -10%, #1e293b, transparent),
-    radial-gradient(900px 600px at 85% 20%, #312e81, transparent),
+    radial-gradient(1200px 600px at 90% -10%, #e8f0fe, transparent),
+    radial-gradient(800px 500px at 10% 20%, #eef2ff, transparent),
     var(--bg);
   color: var(--text);
-  overflow-x: hidden;
 }
 
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 120px 24px 160px;
+  padding: 100px 24px 160px;
 }
 
 /* HERO */
 .hero {
-  background: linear-gradient(135deg, #020617, #020617dd);
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
   border: 1px solid var(--border);
-  border-radius: 28px;
-  padding: 72px;
-  box-shadow: 0 80px 140px rgba(0,0,0,.65);
-  transform: translateY(60px);
+  border-radius: 24px;
+  padding: 64px;
+  box-shadow: 0 30px 80px rgba(15,23,42,.08);
+  transform: translateY(40px);
   opacity: 0;
-  animation: heroIn 1.2s cubic-bezier(.2,.8,.2,1) forwards;
+  animation: heroIn 1s ease forwards;
 }
 
 .hero h1 {
-  font-size: 52px;
-  margin: 0 0 24px;
-  letter-spacing: -0.7px;
+  font-size: 48px;
+  margin: 0 0 20px;
+  letter-spacing: -0.6px;
 }
 
 .hero p {
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1.9;
   max-width: 900px;
   color: var(--muted);
 }
 
-/* SECTION HEAD */
+/* SECTION */
 .section {
-  margin-top: 140px;
+  margin-top: 120px;
 }
 
 .section h2 {
   font-size: 30px;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
   letter-spacing: -0.4px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* FLOW */
+.flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.step {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px;
   opacity: 0;
   transform: translateY(30px);
 }
 
-/* CARDS */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 36px;
+.step span {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: 10px;
 }
 
-.card {
-  position: relative;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  padding: 36px;
-  min-height: 240px;
-  opacity: 0;
-  transform: translateY(60px);
-  transition:
-    transform .5s ease,
-    box-shadow .5s ease,
-    border-color .5s ease;
+.step h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
 }
 
-.card h3 {
-  margin: 0 0 16px;
-  color: #a5b4fc;
-  font-size: 21px;
-}
-
-.card p {
+.step p {
   margin: 0;
-  line-height: 1.75;
-  color: #dbeafe;
-}
-
-/* Cursor signal glow */
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 22px;
-  background:
-    radial-gradient(
-      500px circle at var(--x,50%) var(--y,50%),
-      rgba(99,102,241,0.18),
-      transparent 40%
-    );
-  opacity: 0;
-  transition: opacity .3s ease;
-  pointer-events: none;
-}
-
-.card:hover::after { opacity: 1; }
-.card:hover {
-  transform: translateY(-18px);
-  box-shadow: 0 50px 110px rgba(99,102,241,.4);
-  border-color: var(--accent);
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 /* MANIFESTO */
 .manifesto {
-  margin-top: 160px;
-  background: linear-gradient(180deg, #020617, #020617cc);
+  margin-top: 140px;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
   border: 1px solid var(--border);
-  border-radius: 28px;
-  padding: 72px;
+  border-radius: 24px;
+  padding: 64px;
   opacity: 0;
-  transform: translateY(60px);
+  transform: translateY(40px);
+}
+
+.manifesto h2 {
+  margin-bottom: 24px;
 }
 
 .manifesto p {
-  font-size: 22px;
-  line-height: 2;
+  font-size: 19px;
+  line-height: 1.9;
   color: var(--muted);
   max-width: 950px;
 }
 
 /* REVEAL */
 .reveal {
-  animation: revealUp 1s cubic-bezier(.2,.8,.2,1) forwards;
+  animation: revealUp .9s ease forwards;
 }
 
 @keyframes heroIn {
@@ -165,75 +146,68 @@ body {
 <body>
 <div class="container">
 
-  <!-- HERO -->
+ <!-- HERO -->
   <section class="hero">
     <h1>Sourav</h1>
     <p>
       I work at the intersection of financial crime, risk, and human decision-making.
-      Not as a coder. Not as a model chaser. Not as a dashboard jockey.
-      But as someone who uses data and judgment to quietly reduce human suffering
-      caused by bad incentives, weak systems, and avoidable decisions.
+      Not as a modeler. Not as a dashboard jockey. But as someone who uses data and judgment to reduce real-world harm
+      caused by weak systems and bad decisions.
     </p>
   </section>
 
-  <!-- WHAT I DO -->
-  <section class="section">
-    <h2>What I Actually Spend My Time On</h2>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Illicit Behavior & Abuse Patterns</h3>
-        <p>
-          Understanding how attackers adapt, coordinate, and hide.
-          Looking past transactions into behavior — where intent leaks.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Signal Design & Risk Judgment</h3>
-        <p>
-          Validating what signals matter, which ones decay, and which ones
-          quietly harm good users when applied without context.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Financial Crime Investigations</h3>
-        <p>
-          Turning messy data into defensible narratives that support
-          escalation, enforcement, and policy-level decisions.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Cross-Functional Decisions</h3>
-        <p>
-          Working where Risk, Compliance, and Policy disagree —
-          and helping teams choose the least harmful path.
-        </p>
-      </div>
-    </div>
+<!-- MANIFESTO -->
+  <section class="manifesto">
+    <h2>My Take on Data & Financial Crime</h2>
+    <p>
+      "For me Data science is not only about predicting the future.
+       It’s about understanding behavior deeply enough that the future stops surprising us and stepping in before things go weird, harmful, or just plain wrong."
+      <br><br>
+      “Attackers adapt. Signals decay. Enforcement must scale — while staying fair to legitimate users.”
+      <br><br>
+      “My approach is simple:
+       behavior first.
+       signals second.
+       precision always.”
+      <br><br>
+      Quietly eliminating dishonesty, waste, and stupidity —
+      without lighting the whole platform on fire.
+    </p>
   </section>
 
-  <!-- THINKING -->
-<section class="manifesto">
-  <h2 style="margin-bottom: 24px;">My Take on Data & Financial Crime</h2>
-  <p>
-    "For me Data science is not only about predicting the future.
-   It’s about understanding behavior deeply enough that the future stops surprising us and stepping in before things go weird, harmful, or just plain wrong."
-    <br><br>
-    “Attackers adapt. Signals decay. Enforcement must scale — while staying fair to legitimate users.”
-    <br><br>
-    “My approach is simple:
-     behavior first.
-     signals second.
-     precision always.”
-    <br><br>
-    Quietly eliminating dishonesty, waste, and stupidity —
-    without lighting the whole platform on fire.
-  </p>
+<!-- CASE 1 -->
+<section class="section">
+  <h2>Case 1 — Signal Strength vs User Harm</h2>
+  <div class="flow">
+    <div class="step"><span>STEP 1</span><h4>Problem Noticed</h4><p>A high-performing signal flagged many legitimate users.</p></div>
+    <div class="step"><span>STEP 2</span><h4>System Context</h4><p>Signal operated at scale with downstream enforcement impact.</p></div>
+    <div class="step"><span>STEP 3</span><h4>Signal Breakdown</h4><p>Decomposed timing, velocity, and behavioral consistency.</p></div>
+    <div class="step"><span>STEP 4</span><h4>Judgment Call</h4><p>Separated detection from automatic enforcement.</p></div>
+    <div class="step"><span>STEP 5</span><h4>Outcome</h4><p>Reduced harm while preserving enforcement confidence.</p></div>
+  </div>
 </section>
 
+<!-- CASE 2 -->
+<section class="section">
+  <h2>Case 2 — Visualization for Better Decisions</h2>
+  <div class="flow">
+    <div class="step"><span>STEP 1</span><h4>Problem</h4><p>Investigators overwhelmed by raw tables and alerts.</p></div>
+    <div class="step"><span>STEP 2</span><h4>Reframe</h4><p>Shifted focus from volume to behavioral timelines.</p></div>
+    <div class="step"><span>STEP 3</span><h4>Visualization</h4><p>Created simple flows showing escalation paths.</p></div>
+    <div class="step"><span>STEP 4</span><h4>Impact</h4><p>Faster understanding, fewer clarification loops.</p></div>
+  </div>
+</section>
+
+<!-- CASE 3 -->
+<section class="section">
+  <h2>Case 3 — Stakeholder Decision Meeting</h2>
+  <div class="flow">
+    <div class="step"><span>STEP 1</span><h4>Conflict</h4><p>Risk, Compliance, and Ops had competing priorities.</p></div>
+    <div class="step"><span>STEP 2</span><h4>Translation</h4><p>Converted data into shared risk language.</p></div>
+    <div class="step"><span>STEP 3</span><h4>Trade-offs</h4><p>Explicitly surfaced harm vs enforcement trade-offs.</p></div>
+    <div class="step"><span>STEP 4</span><h4>Decision</h4><p>Aligned teams on least-harm path forward.</p></div>
+  </div>
+</section>
 
 </div>
 
@@ -245,18 +219,10 @@ const observer = new IntersectionObserver(entries => {
       observer.unobserve(e.target);
     }
   });
-}, { threshold: 0.2 });
+}, { threshold: 0.15 });
 
-document.querySelectorAll('.section h2, .card, .manifesto')
+document.querySelectorAll('.section h2, .step, .manifesto')
   .forEach(el => observer.observe(el));
-
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--x', `${e.clientX - r.left}px`);
-    card.style.setProperty('--y', `${e.clientY - r.top}px`);
-  });
-});
 </script>
 
 </body>
