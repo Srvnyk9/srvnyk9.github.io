@@ -1,265 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sourav | Financial Crime & Trust Systems</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sourav — Financial Crime & Trust Systems</title>
 
 <style>
-:root {
-  --blue: #1a73e8;
-  --blue-soft: #e8f0fe;
-  --green: #34a853;
-  --yellow: #fbbc04;
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --border: #e5e7eb;
-  --text: #0f172a;
-  --muted: #475569;
+:root{
+  --blue:#0b5cff;
+  --blue-dark:#0a1b3f;
+  --green:#1db954;
+  --yellow:#f4c430;
+  --text:#0b1220;
+  --muted:#5b6475;
+  --white:#ffffff;
 }
 
 /* RESET */
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: Inter, system-ui, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+  background:#f9fbff;
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-/* ===== Animated background ===== */
-.bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
+/* CINEMATIC BACKGROUND */
+.background{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(11,92,255,.08), transparent 60%),
+    radial-gradient(1000px 500px at 80% 40%, rgba(29,185,84,.06), transparent 60%),
+    radial-gradient(900px 500px at 50% 90%, rgba(244,196,48,.05), transparent 60%);
+  animation: drift 40s ease-in-out infinite alternate;
 }
 
-.blob {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  filter: blur(80px);
-  opacity: 0.35;
-  animation: float 30s infinite alternate ease-in-out;
+@keyframes drift{
+  from{transform:translateY(0)}
+  to{transform:translateY(-60px)}
 }
 
-.blob.blue {
-  background: var(--blue-soft);
-  top: -200px;
-  left: -200px;
-}
-
-.blob.green {
-  background: rgba(52,168,83,0.35);
-  bottom: -200px;
-  right: -200px;
-  animation-duration: 36s;
-}
-
-.blob.yellow {
-  background: rgba(251,188,4,0.35);
-  top: 40%;
-  left: 60%;
-  animation-duration: 42s;
-}
-
-@keyframes float {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(120px, -80px) scale(1.15);
-  }
-}
-
-/* ===== Layout ===== */
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 100px 24px 160px;
+/* LAYOUT */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:140px 32px 180px;
 }
 
 /* HERO */
-.hero {
-  background: linear-gradient(180deg, #ffffff, #f8fafc);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 64px;
-  box-shadow: 0 30px 80px rgba(15,23,42,.08);
-  transform: translateY(40px);
-  opacity: 0;
-  animation: heroIn 1s ease forwards;
+.hero{
+  max-width:900px;
 }
-
-.hero h1 {
-  font-size: 48px;
-  margin: 0 0 20px;
-  letter-spacing: -0.6px;
+.hero h1{
+  font-size:64px;
+  letter-spacing:-1px;
+  margin-bottom:28px;
 }
-
-.hero p {
-  font-size: 19px;
-  line-height: 1.9;
-  max-width: 900px;
-  color: var(--muted);
-}
-
-/* SECTION */
-.section {
-  margin-top: 120px;
-}
-
-.section h2 {
-  font-size: 30px;
-  margin-bottom: 36px;
-  letter-spacing: -0.4px;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* FLOW */
-.flow {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-}
-
-.step {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 28px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-
-.step:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(26,115,232,.15);
-}
-
-.step span {
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--blue);
-  margin-bottom: 10px;
-}
-
-.step h4 {
-  margin: 0 0 10px;
-  font-size: 18px;
-}
-
-.step p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.6;
+.hero p{
+  font-size:22px;
+  line-height:1.9;
+  color:var(--muted);
 }
 
 /* MANIFESTO */
-.manifesto {
-  margin-top: 140px;
-  background: linear-gradient(180deg, #ffffff, #f8fafc);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 64px;
-  opacity: 0;
-  transform: translateY(40px);
+.manifesto{
+  margin-top:140px;
+  max-width:900px;
+}
+.manifesto h2{
+  font-size:36px;
+  margin-bottom:32px;
+}
+.manifesto p{
+  font-size:20px;
+  line-height:2;
+  color:var(--muted);
 }
 
-.manifesto h2 {
-  margin-bottom: 24px;
+/* CASES */
+.cases{
+  margin-top:180px;
+}
+.cases h2{
+  font-size:40px;
+  margin-bottom:40px;
 }
 
-.manifesto p {
-  font-size: 19px;
-  line-height: 1.9;
-  color: var(--muted);
-  max-width: 950px;
+/* MODE SELECTOR */
+.modes{
+  display:flex;
+  gap:28px;
+  margin-bottom:48px;
+}
+.mode{
+  cursor:pointer;
+  font-size:18px;
+  padding-bottom:8px;
+  border-bottom:2px solid transparent;
+  color:var(--muted);
+  transition:.3s;
+}
+.mode.active{
+  color:var(--blue);
+  border-color:var(--blue);
 }
 
-/* REVEAL */
-.reveal {
-  animation: revealUp .9s ease forwards;
+/* FLOW */
+.flow{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:36px;
+}
+.step{
+  padding:32px 0;
+  border-top:1px solid #e3e8f2;
+  opacity:0;
+  transform:translateY(20px);
+  animation: appear .6s forwards;
+}
+.step span{
+  font-size:13px;
+  font-weight:600;
+  color:var(--blue);
+}
+.step h4{
+  font-size:22px;
+  margin:12px 0;
+}
+.step p{
+  margin:0;
+  font-size:17px;
+  color:var(--muted);
 }
 
-@keyframes heroIn {
-  to { opacity: 1; transform: translateY(0); }
+@keyframes appear{
+  to{opacity:1; transform:translateY(0)}
 }
-@keyframes revealUp {
-  to { opacity: 1; transform: translateY(0); }
+
+/* FOOTER */
+.footer{
+  margin-top:200px;
+  font-size:16px;
+  color:var(--muted);
 }
+.footer a{
+  color:var(--blue);
+  text-decoration:none;
+}
+.footer a:hover{text-decoration:underline}
 </style>
 </head>
 
 <body>
 
-<!-- Animated background -->
-<div class="bg">
-  <div class="blob blue"></div>
-  <div class="blob green"></div>
-  <div class="blob yellow"></div>
-</div>
+<div class="background"></div>
 
 <div class="container">
 
+<!-- HERO -->
 <section class="hero">
-    <h1>Sourav</h1>
-    <p>
-      I work at the intersection of financial crime, risk, and human decision-making.
-      Not as a modeler. Not as a dashboard jockey. But as someone who uses data and judgment to reduce real-world harm
-      caused by weak systems and bad decisions.
-    </p>
-  </section>
-
-  <section class="manifesto">
-    <h2>My Take on Data & Financial Crime</h2>
-    <p>
-      "For me Data science is not only about predicting the future.
-       It’s about understanding behavior deeply enough that the future stops surprising us and stepping in before things go weird, harmful, or just plain wrong."
-      <br><br>
-      “Attackers adapt. Signals decay. Enforcement must scale — while staying fair to legitimate users.”
-      <br><br>
-      “My approach is simple:
-       behavior first.
-       signals second.
-       precision always.”
-      <br><br>
-      Quietly eliminating dishonesty, waste, and stupidity —
-      without lighting the whole platform on fire.
-    </p>
-  </section>
-
-<section class="section">
-  <h2>Case — Signal Strength vs User Harm</h2>
-  <div class="flow">
-    <div class="step"><span>STEP 1</span><h4>Problem Noticed</h4><p>A strong signal caused unintended user friction.</p></div>
-    <div class="step"><span>STEP 2</span><h4>System Context</h4><p>Signal operated at scale with downstream enforcement.</p></div>
-    <div class="step"><span>STEP 3</span><h4>Signal Deconstruction</h4><p>Analyzed timing, velocity, and behavioral decay.</p></div>
-    <div class="step"><span>STEP 4</span><h4>Judgment Call</h4><p>Separated detection from automatic enforcement.</p></div>
-    <div class="step"><span>STEP 5</span><h4>Outcome</h4><p>Reduced harm without weakening protection.</p></div>
-  </div>
+  <h1>Sourav</h1>
+  <p>
+    I work at the intersection of financial crime, risk, and human decision-making.
+    Not as a modeler. Not as a dashboard jockey.
+    But as someone who uses data and judgment to reduce real-world harm
+    caused by weak systems and bad decisions.
+  </p>
 </section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <h2>My Take on Data & Financial Crime</h2>
+  <p>
+    Data science is not about predicting the future.
+    It’s about understanding behavior deeply enough
+    that the future stops surprising us —
+    and stepping in before things go weird, harmful,
+    or quietly wrong.
+    <br><br>
+    Attackers adapt. Signals decay.
+    Enforcement must scale — without harming legitimate users.
+    <br><br>
+    Behavior first.
+    Signals second.
+    Precision always.
+    <br><br>
+    Quietly eliminating dishonesty, waste, and stupidity —
+    without lighting the whole platform on fire.
+  </p>
+</section>
+
+<!-- CASES -->
+<section class="cases">
+  <h2>How I Think in Real Situations</h2>
+
+  <div class="modes">
+    <div class="mode active" onclick="loadCase(0)">Signal Integrity</div>
+    <div class="mode" onclick="loadCase(1)">Investigation Design</div>
+    <div class="mode" onclick="loadCase(2)">Stakeholder Decisions</div>
+  </div>
+
+  <div id="flow" class="flow"></div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  Contact:
+  <a href="mailto:sourav@email.com">Email</a> ·
+  <a href="https://linkedin.com" target="_blank">LinkedIn</a> ·
+  <a href="https://github.com/srvnyk9" target="_blank">GitHub</a>
+</div>
 
 </div>
 
 <script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('reveal');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.15 });
+const cases=[
+[
+["STEP 1","Problem Noticed","A strong signal created unintended friction."],
+["STEP 2","System Reality","Signal operated at scale with enforcement impact."],
+["STEP 3","Behavioral Breakdown","Timing, velocity, and decay examined."],
+["STEP 4","Judgment Call","Detection separated from automation."],
+["STEP 5","Outcome","Protection preserved, harm reduced."]
+],
+[
+["STEP 1","Investigator Fatigue","Too many signals, not enough clarity."],
+["STEP 2","Behavioral Grouping","Activities clustered by intent."],
+["STEP 3","Visual Simplification","Cognitive load reduced."],
+["STEP 4","Decision Velocity","Clear paths for action."],
+["STEP 5","Outcome","Confidence increased, noise removed."]
+],
+[
+["STEP 1","Conflict","Risk vs Compliance misalignment."],
+["STEP 2","Shared Language","Data reframed into common ground."],
+["STEP 3","Trade-offs Made Explicit","Coverage vs harm surfaced."],
+["STEP 4","Decision Anchored","Principles over opinions."],
+["STEP 5","Outcome","Scalable alignment achieved."]
+]
+];
 
-document.querySelectorAll('.section h2, .step, .manifesto')
-  .forEach(el => observer.observe(el));
+function loadCase(i){
+  document.querySelectorAll('.mode').forEach((m,idx)=>{
+    m.classList.toggle('active',idx===i);
+  });
+  const flow=document.getElementById('flow');
+  flow.innerHTML='';
+  cases[i].forEach(s=>{
+    const d=document.createElement('div');
+    d.className='step';
+    d.innerHTML=`<span>${s[0]}</span><h4>${s[1]}</h4><p>${s[2]}</p>`;
+    flow.appendChild(d);
+  });
+}
+loadCase(0);
 </script>
 
 </body>
