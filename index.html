@@ -3,29 +3,28 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sourav | Financial Crime & Trust & Safety</title>
+<title>Sourav | Financial Crime, Risk & Trust Systems</title>
 
 <style>
 :root {
-  --bg-main: #020617;
-  --bg-soft: #020617cc;
-  --card: #020617f0;
+  --bg: #020617;
+  --card: #020617f2;
   --border: #1e293b;
   --accent: #6366f1;
-  --text-main: #e5e7eb;
-  --text-soft: #c7d2fe;
+  --text: #e5e7eb;
+  --muted: #c7d2fe;
 }
 
-/* RESET */
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: Inter, system-ui, Arial, sans-serif;
   background:
-    radial-gradient(1200px 600px at 20% -10%, #1e293b, transparent),
-    radial-gradient(800px 500px at 90% 20%, #312e81, transparent),
-    var(--bg-main);
-  color: var(--text-main);
+    radial-gradient(1000px 500px at 15% -10%, #1e293b, transparent),
+    radial-gradient(900px 600px at 85% 20%, #312e81, transparent),
+    var(--bg);
+  color: var(--text);
   overflow-x: hidden;
 }
 
@@ -39,31 +38,35 @@ body {
 .hero {
   background: linear-gradient(135deg, #020617, #020617dd);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 64px;
-  box-shadow: 0 60px 120px rgba(0,0,0,.6);
+  border-radius: 28px;
+  padding: 72px;
+  box-shadow: 0 80px 140px rgba(0,0,0,.65);
   transform: translateY(60px);
   opacity: 0;
-  animation: heroEnter 1.2s cubic-bezier(.2,.8,.2,1) forwards;
+  animation: heroIn 1.2s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 .hero h1 {
-  font-size: 48px;
-  margin: 0 0 20px;
-  letter-spacing: -0.6px;
+  font-size: 52px;
+  margin: 0 0 24px;
+  letter-spacing: -0.7px;
 }
 
 .hero p {
-  font-size: 18px;
-  line-height: 1.8;
-  max-width: 820px;
-  color: var(--text-soft);
+  font-size: 20px;
+  line-height: 1.9;
+  max-width: 900px;
+  color: var(--muted);
 }
 
-/* SECTION TITLE */
-.section-title {
-  margin: 120px 0 40px;
-  font-size: 28px;
+/* SECTION HEAD */
+.section {
+  margin-top: 140px;
+}
+
+.section h2 {
+  font-size: 30px;
+  margin-bottom: 40px;
   letter-spacing: -0.4px;
   opacity: 0;
   transform: translateY(30px);
@@ -73,16 +76,16 @@ body {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 32px;
+  gap: 36px;
 }
 
 .card {
   position: relative;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px;
-  min-height: 220px;
+  border-radius: 22px;
+  padding: 36px;
+  min-height: 240px;
   opacity: 0;
   transform: translateY(60px);
   transition:
@@ -92,23 +95,23 @@ body {
 }
 
 .card h3 {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   color: #a5b4fc;
-  font-size: 20px;
+  font-size: 21px;
 }
 
 .card p {
   margin: 0;
-  line-height: 1.7;
+  line-height: 1.75;
   color: #dbeafe;
 }
 
-/* Cursor-follow glow */
+/* Cursor signal glow */
 .card::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 20px;
+  border-radius: 22px;
   background:
     radial-gradient(
       500px circle at var(--x,50%) var(--y,50%),
@@ -122,41 +125,35 @@ body {
 
 .card:hover::after { opacity: 1; }
 .card:hover {
-  transform: translateY(-16px);
-  box-shadow: 0 40px 100px rgba(99,102,241,.35);
+  transform: translateY(-18px);
+  box-shadow: 0 50px 110px rgba(99,102,241,.4);
   border-color: var(--accent);
 }
 
-/* THINKING SECTION */
-.thinking {
-  margin-top: 140px;
+/* MANIFESTO */
+.manifesto {
+  margin-top: 160px;
   background: linear-gradient(180deg, #020617, #020617cc);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 64px;
+  border-radius: 28px;
+  padding: 72px;
   opacity: 0;
   transform: translateY(60px);
 }
 
-.thinking h2 {
-  margin: 0 0 16px;
-  font-size: 30px;
+.manifesto p {
+  font-size: 22px;
+  line-height: 2;
+  color: var(--muted);
+  max-width: 950px;
 }
 
-.thinking p {
-  font-size: 18px;
-  line-height: 1.8;
-  max-width: 900px;
-  color: var(--text-soft);
-}
-
-/* SCROLL ANIMATIONS */
+/* REVEAL */
 .reveal {
   animation: revealUp 1s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
-/* KEYFRAMES */
-@keyframes heroEnter {
+@keyframes heroIn {
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes revealUp {
@@ -168,82 +165,92 @@ body {
 <body>
 <div class="container">
 
+  <!-- HERO -->
   <section class="hero">
     <h1>Sourav</h1>
     <p>
-      Financial Crime Specialist with deep experience in transaction monitoring,
-      risk investigations, and large-scale behavioral analysis.
-      I use data, signals, and structured reasoning to detect illicit activity,
-      validate risk indicators, and support high-stakes enforcement and policy decisions —
-      aligned with how Google Trust & Safety operates at scale.
+      I work at the intersection of financial crime, risk, and human decision-making.
+      Not as a coder. Not as a model chaser. Not as a dashboard jockey.
+      But as someone who uses data and judgment to quietly reduce human suffering
+      caused by bad incentives, weak systems, and avoidable decisions.
     </p>
   </section>
 
-  <h2 class="section-title">What I Actually Do</h2>
+  <!-- WHAT I DO -->
+  <section class="section">
+    <h2>What I Actually Spend My Time On</h2>
 
-  <section class="cards">
+    <div class="cards">
+      <div class="card">
+        <h3>Illicit Behavior & Abuse Patterns</h3>
+        <p>
+          Understanding how attackers adapt, coordinate, and hide.
+          Looking past transactions into behavior — where intent leaks.
+        </p>
+      </div>
 
-    <div class="card">
-      <h3>Illicit Pattern & Abuse Detection</h3>
-      <p>
-        Detecting money laundering, account abuse, and coordinated fraud
-        through behavioral signals, anomaly detection, and transaction analysis.
-      </p>
+      <div class="card">
+        <h3>Signal Design & Risk Judgment</h3>
+        <p>
+          Validating what signals matter, which ones decay, and which ones
+          quietly harm good users when applied without context.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Financial Crime Investigations</h3>
+        <p>
+          Turning messy data into defensible narratives that support
+          escalation, enforcement, and policy-level decisions.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Cross-Functional Decisions</h3>
+        <p>
+          Working where Risk, Compliance, and Policy disagree —
+          and helping teams choose the least harmful path.
+        </p>
+      </div>
     </div>
-
-    <div class="card">
-      <h3>Risk Signal Validation & Triage</h3>
-      <p>
-        Evaluating automated and manual risk indicators, reducing false positives,
-        and strengthening investigation confidence.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Financial Crime Investigations</h3>
-      <p>
-        Supporting complex investigations with defensible analysis,
-        evidence-based reasoning, and escalation-ready narratives.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Policy & Cross-Functional Decisions</h3>
-      <p>
-        Partnering with Risk, Compliance, and Policy teams on ambiguous,
-        high-impact cases where judgment and data must align.
-      </p>
-    </div>
-
   </section>
 
-  <section class="thinking">
-    <h2>How I Think About Financial Crime</h2>
+  <!-- THINKING -->
+  <section class="manifesto">
     <p>
-      I treat financial crime as a systems problem — not a checklist problem.
-      Attackers adapt, signals decay, and enforcement must scale without harming
-      legitimate users. My approach mirrors Trust & Safety at Google:
-      understand behavior first, then design signals, then enforce with precision.
+      Data science is not about predicting the future.
+      It’s about preventing futures that shouldn’t exist.
+      <br><br>
+      Attackers adapt. Signals decay.
+      Enforcement must scale without harming legitimate users.
+      <br><br>
+      My approach is simple:
+      understand behavior first,
+      design signals second,
+      enforce with precision —
+      building systems so clear and simple
+      that even rocket science feels like basic arithmetic.
+      <br><br>
+      Quietly eliminating dishonesty, waste, and stupidity —
+      without lighting the whole platform on fire.
     </p>
   </section>
 
 </div>
 
 <script>
-/* Scroll reveal */
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('reveal');
-      observer.unobserve(entry.target);
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('reveal');
+      observer.unobserve(e.target);
     }
   });
 }, { threshold: 0.2 });
 
-document.querySelectorAll('.section-title, .card, .thinking')
+document.querySelectorAll('.section h2, .card, .manifesto')
   .forEach(el => observer.observe(el));
 
-/* Cursor-follow glow */
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const r = card.getBoundingClientRect();
