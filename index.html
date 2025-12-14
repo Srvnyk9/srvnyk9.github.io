@@ -1,12 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sourav | Trust & Safety Data Analyst</title>
+
+  <style>
+    /* ---------- Base ---------- */
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617);
+      color: #e5e7eb;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      background: linear-gradient(135deg, #1e293b, #020617);
+      border-radius: 18px;
+      padding: 56px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      animation: slideDown 1.2s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      margin: 0 0 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #c7d2fe;
+      max-width: 720px;
+      line-height: 1.7;
+    }
+
+    /* ---------- Cards Grid ---------- */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      margin-top: 72px;
+    }
+
+    .card {
+      background: rgba(2,6,23,0.85);
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      transform: translateY(40px);
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+    .card:nth-child(4) { animation-delay: 0.8s; }
+
+    .card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 40px 80px rgba(99,102,241,0.35);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      color: #a5b4fc;
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 0;
+      line-height: 1.6;
+      color: #dbeafe;
+    }
+
+    /* ---------- Animations ---------- */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
 <body>
 
   <div class="container">
 
-    <section class="hero-card">
+    <section class="hero">
       <h1>Sourav</h1>
-      <p class="tagline">
+      <p>
         Trust & Safety Data Analyst working at the intersection of
         risk, investigations, and large-scale data systems.
+        I focus on identifying abnormal behavior, validating risk signals,
+        and supporting high-stakes decisions with defensible, data-driven insights.
       </p>
     </section>
 
@@ -15,8 +128,8 @@
       <div class="card">
         <h3>Abnormal Behavior Detection</h3>
         <p>
-          Identifying suspicious transactional patterns using data-driven
-          signals and behavioral analysis.
+          Identifying suspicious transactional patterns using behavioral signals,
+          anomaly detection, and structured analysis.
         </p>
       </div>
 
@@ -24,23 +137,23 @@
         <h3>Risk Signal Validation</h3>
         <p>
           Evaluating risk indicators, reducing false positives,
-          and supporting escalation decisions.
+          and improving investigation efficiency.
         </p>
       </div>
 
       <div class="card">
         <h3>Trust & Safety Investigations</h3>
         <p>
-          Supporting investigations with structured analysis and
-          defensible insights.
+          Supporting investigations with clear reasoning,
+          evidence-based insights, and escalation support.
         </p>
       </div>
 
       <div class="card">
         <h3>Cross-Functional Decision Support</h3>
         <p>
-          Partnering with Risk and Compliance teams on complex,
-          ambiguous cases.
+          Partnering with Risk, Compliance, and Policy teams on complex,
+          ambiguous, high-impact cases.
         </p>
       </div>
 
@@ -49,3 +162,4 @@
   </div>
 
 </body>
+</html>
