@@ -1,370 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Sourav Nayak · Financial Crime & Trust Systems</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Sourav Nayak · Financial Crime Systems</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --blue: #1e3a8a;
-      --blue-bright: #2563eb;
-      --green: #22c55e;
-      --yellow: #facc15;
-      --dark: #0b1220;
-      --bg: #f8fbff;
-      --card: rgba(255,255,255,0.88);
-      --muted: #475569;
-    }
+<style>
+:root {
+  --blue:#2563eb;
+  --green:#22c55e;
+  --yellow:#facc15;
+  --dark:#0b1220;
+  --bg:#f4f8ff;
+  --card:rgba(255,255,255,0.92);
+  --muted:#475569;
+}
 
-    * { box-sizing: border-box; }
+*{box-sizing:border-box;margin:0;padding:0;}
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--dark);
-      overflow-x: hidden;
-    }
+body{
+  font-family:system-ui;
+  background:var(--bg);
+  color:var(--dark);
+  overflow-x:hidden;
+}
 
-    /* ===== Living Background ===== */
-    .background {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        radial-gradient(1200px 600px at 15% 10%, rgba(37,99,235,.10), transparent 60%),
-        radial-gradient(1000px 500px at 80% 30%, rgba(34,197,94,.08), transparent 60%),
-        radial-gradient(900px 500px at 50% 90%, rgba(250,204,21,.07), transparent 60%);
-      animation: drift 50s ease-in-out infinite alternate;
-    }
+/* ===== Animated Background ===== */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+  radial-gradient(circle at 20% 20%, rgba(37,99,235,.12), transparent 50%),
+  radial-gradient(circle at 80% 30%, rgba(34,197,94,.10), transparent 50%),
+  radial-gradient(circle at 50% 90%, rgba(250,204,21,.10), transparent 50%);
+  animation:moveBg 20s ease-in-out infinite alternate;
+}
 
-    .signals {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-    }
+@keyframes moveBg{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-60px);}
+}
 
-    .signal {
-      position: absolute;
-      width: 2px;
-      height: 140%;
-      background: linear-gradient(to bottom,
-        transparent,
-        rgba(30,58,138,.35),
-        transparent);
-      opacity: 0.18;
-      animation: move 18s linear infinite;
-    }
+/* floating dots */
+.dot{
+  position:fixed;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--blue);
+  opacity:.2;
+  animation:float 12s linear infinite;
+}
+.dot:nth-child(1){left:20%;animation-delay:0s;}
+.dot:nth-child(2){left:50%;animation-delay:3s;}
+.dot:nth-child(3){left:75%;animation-delay:6s;}
 
-    .signal:nth-child(1) { left: 18%; animation-duration: 22s; }
-    .signal:nth-child(2) { left: 42%; animation-duration: 28s; }
-    .signal:nth-child(3) { left: 68%; animation-duration: 24s; }
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-20vh);}
+}
 
-    @keyframes drift {
-      from { transform: translateY(0); }
-      to { transform: translateY(-80px); }
-    }
+/* ===== NAV ===== */
+nav{
+  position:fixed;
+  top:20px;
+  right:40px;
+  font-size:14px;
+}
 
-    @keyframes move {
-      from { transform: translateY(-30%); }
-      to { transform: translateY(130%); }
-    }
+nav a{
+  margin-left:18px;
+  text-decoration:none;
+  color:var(--muted);
+  transition:.3s;
+}
 
-    /* ===== Top Contact ===== */
-    nav {
-      position: fixed;
-      top: 20px;
-      right: 32px;
-      z-index: 10;
-      font-size: 14px;
-    }
+nav a:hover{
+  color:var(--blue);
+}
 
-    nav a {
-      margin-left: 16px;
-      text-decoration: none;
-      color: var(--muted);
-    }
+/* ===== Layout ===== */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:140px 30px;
+}
 
-    nav a:hover { color: var(--blue-bright); }
+section{margin-bottom:160px;}
 
-    /* ===== Layout ===== */
-    .container {
-      max-width: 1150px;
-      margin: auto;
-      padding: 140px 32px 180px;
-    }
+/* ===== HERO ===== */
+.hero h1{
+  font-size:72px;
+  font-weight:800;
+  letter-spacing:-1px;
+  display:inline-block;
+  position:relative;
+}
 
-    section { margin-bottom: 160px; }
+.hero h1::after{
+  content:"";
+  position:absolute;
+  bottom:-8px;
+  left:0;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,var(--blue),var(--green),var(--yellow));
+}
 
-    /* ===== Hero ===== */
-    .hero {
-      max-width: 900px;
-    }
+.tagline{
+  margin-top:10px;
+  font-size:14px;
+  letter-spacing:2px;
+  color:var(--muted);
+}
 
-    .hero h1 {
-      font-size: 68px;
-      font-weight: 700;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-      position: relative;
-      display: inline-block;
-    }
+.hero-text{
+  margin-top:24px;
+  font-size:22px;
+  line-height:1.9;
+  color:var(--muted);
+  max-width:800px;
+}
 
-    .hero h1::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(
-        90deg,
-        var(--blue-bright),
-        var(--green),
-        var(--yellow)
-      );
-      opacity: 0.9;
-    }
+.hero-text strong{
+  color:var(--dark);
+}
 
-    .tagline {
-      font-size: 16px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
+/* ===== CARD ===== */
+.card{
+  background:var(--card);
+  border-radius:28px;
+  padding:60px;
+  box-shadow:0 30px 100px rgba(0,0,0,.08);
+  transition:.4s;
+}
 
-    .hero p {
-      font-size: 22px;
-      line-height: 1.9;
-      color: var(--muted);
-    }
+.card:hover{
+  transform:translateY(-6px);
+}
 
-    /* ===== Cards ===== */
-    .card {
-      background: var(--card);
-      border-radius: 28px;
-      padding: 56px;
-      box-shadow: 0 40px 120px rgba(15,23,42,0.10);
-    }
+/* ===== MANIFESTO ===== */
+.manifesto h2{
+  font-size:36px;
+  margin-bottom:30px;
+}
 
-    /* ===== Manifesto ===== */
-    .manifesto h2 {
-      font-size: 36px;
-      margin-bottom: 32px;
-    }
+.manifesto p{
+  font-size:20px;
+  line-height:2;
+  color:var(--muted);
+}
 
-    .manifesto p {
-      font-size: 20px;
-      line-height: 2;
-      color: var(--muted);
-    }
+/* ===== WORK ===== */
+.work h2{
+  font-size:38px;
+  margin-bottom:30px;
+}
 
-    /* ===== Work Section ===== */
-    .work h2 {
-      font-size: 38px;
-      margin-bottom: 36px;
-    }
+.work li{
+  margin-bottom:14px;
+  font-size:19px;
+  color:var(--muted);
+}
 
-    .work ul {
-      padding-left: 20px;
-      max-width: 900px;
-    }
+/* ===== CASES ===== */
+.cases h2{
+  font-size:40px;
+  margin-bottom:40px;
+}
 
-    .work li {
-      font-size: 19px;
-      line-height: 1.8;
-      margin-bottom: 14px;
-      color: var(--muted);
-    }
+.case-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
 
-    /* ===== Cases ===== */
-    .cases h2 {
-      font-size: 40px;
-      margin-bottom: 40px;
-    }
+.case{
+  background:var(--card);
+  border-radius:24px;
+  padding:36px;
+  cursor:pointer;
+  transition:.4s;
+}
 
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 36px;
-    }
+.case:hover{
+  transform:scale(1.04);
+  box-shadow:0 25px 80px rgba(0,0,0,.12);
+}
 
-    .case {
-      background: var(--card);
-      border-radius: 24px;
-      padding: 40px;
-      cursor: pointer;
-      transition: transform .3s ease, box-shadow .3s ease;
-    }
+.case h3{
+  color:var(--blue);
+  margin-bottom:10px;
+}
 
-    .case:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 40px 100px rgba(0,0,0,.12);
-    }
+.case p{
+  color:var(--muted);
+}
 
-    .case h3 {
-      margin-top: 0;
-      color: var(--blue-bright);
-    }
+.details{
+  display:none;
+  margin-top:14px;
+  font-size:15px;
+  line-height:1.6;
+}
 
-    .case p {
-      font-size: 16px;
-      color: var(--muted);
-    }
-
-    .details {
-      display: none;
-      margin-top: 18px;
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    /* ===== Footer ===== */
-    footer {
-      text-align: center;
-      font-size: 14px;
-      color: var(--muted);
-    }
-  </style>
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding-bottom:40px;
+  font-size:14px;
+  color:var(--muted);
+}
+</style>
 </head>
 
 <body>
 
-<div class="background"></div>
-
-<div class="signals">
-  <div class="signal"></div>
-  <div class="signal"></div>
-  <div class="signal"></div>
-</div>
+<div class="bg"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
 
 <nav>
-  <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>
-  <a href="mailto:YOUR_EMAIL">Email</a>
-  <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
-  <a href="YOUR_RESUME_LINK" target="_blank">Resume</a>
+<a href="#">LinkedIn</a>
+<a href="#">Email</a>
+<a href="#">GitHub</a>
+<a href="#">Resume</a>
 </nav>
 
 <div class="container">
 
-  <!-- HERO -->
 <section class="hero">
-  <h1>Sourav Nayak</h1>
+<h1>Sourav Nayak</h1>
 
-  <p class="tagline">
-    Financial Crime · Trust Systems · Human Decisions
-  </p>
+<p class="tagline">
+FINANCIAL CRIME · TRUST SYSTEMS · HUMAN DECISIONS
+</p>
 
-  <p class="hero-text">
-    I work inside real financial crime systems — transaction monitoring, sanctions screening, AML workflows, and abuse detection — where decisions are not clean and signals are rarely perfect.
-  </p>
+<p class="hero-text">
+I work inside financial crime systems — transactions, AML, sanctions, abuse — where signals are messy and decisions carry real consequences.
+</p>
 
-  <p class="hero-text">
-    I’ve seen investigators burn time on repetitive errors, miss context due to fragmented systems, and struggle to separate noise from real risk. My work focuses on fixing that — simplifying workflows, improving signal clarity, and reducing decision friction.
-  </p>
+<p class="hero-text">
+I’ve seen investigators waste time on repetitive errors, miss context, and struggle with unclear systems. My focus is fixing that — making workflows cleaner, signals sharper, and decisions faster.
+</p>
 
-  <p class="hero-text">
-    Built tools to auto-assign alerts. Reworked policies and SOPs. Helped migrate region-specific processes into centralized systems. Presented changes to global stakeholders and drove adoption.
-  </p>
+<p class="hero-text">
+Built alert assignment logic, redesigned SOPs, migrated policies into centralized systems, and worked with stakeholders to push changes into production.
+</p>
 
-  <p class="hero-text strong">
-    Not just analyzing risk — but making sure the system behind the decision actually works.
-  </p>
+<p class="hero-text">
+<strong>Not just analyzing risk — fixing how decisions are actually made.</strong>
+</p>
+
 </section>
 
-  <!-- MANIFESTO -->
-  <section class="card manifesto">
-    <h2>My Take on Data & Financial Crime</h2>
-    <p>
-      Data science isn’t about predicting the future.
-      It’s about understanding behavior deeply enough that the future stops surprising us.
-      <br><br>
-      Attackers adapt. Signals decay.
-      Enforcement must scale — while staying fair to legitimate users.
-      <br><br>
-      Behavior first. Signals second. Precision always.
-      <br><br>
-      Quietly eliminating dishonesty, waste, and stupidity —
-      without lighting the whole platform on fire.
-    </p>
-  </section>
+<section class="card manifesto">
+<h2>My Take</h2>
+<p>
+Data is not about prediction. It’s about reducing surprise.<br><br>
+Attackers adapt. Systems decay. Decisions still need to scale.<br><br>
+Behavior first. Signals second. Precision always.<br><br>
+Quietly eliminating noise — without breaking what works.
+</p>
+</section>
 
-  <!-- WORK -->
-  <section class="work">
-    <h2>What I Actually Work On</h2>
-    <ul>
-      <li>Breaking down transaction patterns so investigators can see the story, not just the alert</li>
-      <li>Using data analysis to surface what matters and hide what doesn’t</li>
-      <li>Designing simple visual summaries that reduce decision fatigue</li>
-      <li>Fixing SOPs so they work during real reviews, not just audits</li>
-      <li>Working with risk, compliance, and ops to get decisions approved and shipped</li>
-      <li>Building small automation where it actually saves human time</li>
-    </ul>
-  </section>
+<section class="work">
+<h2>What I Actually Do</h2>
+<ul>
+<li>Reduce investigator confusion by surfacing the actual story behind alerts</li>
+<li>Use data analysis to separate noise from real risk</li>
+<li>Design simple visual flows to speed up decision-making</li>
+<li>Fix broken SOPs that don’t work in real environments</li>
+<li>Work with risk & compliance to get changes approved and shipped</li>
+<li>Add automation where it saves human effort</li>
+</ul>
+</section>
 
-  <!-- CASES -->
-  <section class="cases">
-    <h2>Real Work, Real Systems, Real Problems I Solved....</h2>
-    <div class="case-grid">
+<section class="cases">
+<h2>Real Problems I Solved</h2>
 
-      <div class="case" onclick="toggle(this)">
-        <h3>When Investigators Kept Making the Same Mistake</h3>
-        <p>Repetitive errors caused by missing context and manual assignment.</p>
-        <div class="details">
-          Investigators were repeatedly misreading similar transaction patterns.
-          I helped design a small auto-alert assignment logic, clarified SOP language,
-          and added context so the story was visible earlier.
-          <br><br>
-          Result: fewer repeat errors, faster reviews, and less back-and-forth.
-          <br><br>
-          <strong>Tools:</strong> SQL, alert queues, SOP docs
-        </div>
-      </div>
+<div class="case-grid">
 
-      <div class="case" onclick="toggle(this)">
-        <h3>Why Region-Wise Policies Were Slowing Everyone Down</h3>
-        <p>Fragmented rules creating confusion and inconsistency.</p>
-        <div class="details">
-          Region-specific policies caused investigators to second-guess decisions.
-          I helped migrate these into a centralized structure, worked through stakeholder concerns,
-          got approvals, and presented the changes globally.
-          <br><br>
-          Result: clearer decisions and consistent enforcement.
-          <br><br>
-          <strong>Tools:</strong> Policy docs, stakeholder decks, governance systems
-        </div>
-      </div>
+<div class="case" onclick="toggle(this)">
+<h3>Repeated Investigator Errors</h3>
+<p>Same mistakes, same alerts, wasted time.</p>
+<div class="details">
+Investigators misread similar patterns repeatedly. Built alert assignment logic + improved SOP clarity.<br><br>
+Result: reduced repeat errors and faster reviews.<br><br>
+Tools: SQL, workflow queues
+</div>
+</div>
 
-      <div class="case" onclick="toggle(this)">
-        <h3>Stopping Humans from Doing Mechanical Work</h3>
-        <p>Judgment wasted on repetitive workflows.</p>
-        <div class="details">
-          Investigators were spending time on steps that added no real signal.
-          I helped identify where light automation and better handoffs could reduce friction.
-          <br><br>
-          Result: more time spent on judgment, less on repetition.
-          <br><br>
-          <strong>Tools:</strong> Workflow tools, process mapping
-        </div>
-      </div>
+<div class="case" onclick="toggle(this)">
+<h3>Fragmented Policy System</h3>
+<p>Different regions, different rules, confusion everywhere.</p>
+<div class="details">
+Migrated regional policies into centralized system. Got stakeholder approval and drove rollout.<br><br>
+Result: consistent decisions globally.<br><br>
+Tools: Policy docs, stakeholder decks
+</div>
+</div>
 
-    </div>
-  </section>
+<div class="case" onclick="toggle(this)">
+<h3>Wasted Human Effort</h3>
+<p>People doing mechanical work instead of thinking.</p>
+<div class="details">
+Identified repetitive workflow steps and reduced them using light automation.<br><br>
+Result: more focus on real risk decisions.<br><br>
+Tools: process mapping
+</div>
+</div>
+
+</div>
+
+</section>
 
 </div>
 
 <footer>
-  © Sourav Nayak · Built with intent, not noise
+© Sourav Nayak · Built with intent, not noise
 </footer>
 
 <script>
-  function toggle(card) {
-    const d = card.querySelector('.details');
-    d.style.display = d.style.display === 'block' ? 'none' : 'block';
-  }
+function toggle(el){
+let d=el.querySelector(".details");
+d.style.display=d.style.display==="block"?"none":"block";
+}
 </script>
 
 </body>
