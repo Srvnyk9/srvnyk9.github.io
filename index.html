@@ -16,7 +16,7 @@
   --muted:#475569;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:system-ui;
@@ -25,35 +25,37 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== Animated Background ===== */
+/* ===== BACKGROUND ===== */
 .bg{
   position:fixed;
   inset:0;
   z-index:-2;
   background:
-  radial-gradient(circle at 20% 20%, rgba(37,99,235,.12), transparent 50%),
-  radial-gradient(circle at 80% 30%, rgba(34,197,94,.10), transparent 50%),
-  radial-gradient(circle at 50% 90%, rgba(250,204,21,.10), transparent 50%);
-  animation:moveBg 20s ease-in-out infinite alternate;
+  radial-gradient(circle at 20% 20%, rgba(37,99,235,.15), transparent 50%),
+  radial-gradient(circle at 80% 30%, rgba(34,197,94,.12), transparent 50%),
+  radial-gradient(circle at 50% 90%, rgba(250,204,21,.12), transparent 50%);
+  animation:bgMove 20s ease-in-out infinite alternate;
 }
 
-@keyframes moveBg{
+@keyframes bgMove{
   0%{transform:translateY(0);}
   100%{transform:translateY(-60px);}
 }
 
-/* floating dots */
-.dot{
+/* particles */
+.particle{
   position:fixed;
-  width:6px;height:6px;
-  border-radius:50%;
+  width:4px;height:4px;
   background:var(--blue);
+  border-radius:50%;
   opacity:.2;
   animation:float 12s linear infinite;
 }
-.dot:nth-child(1){left:20%;animation-delay:0s;}
-.dot:nth-child(2){left:50%;animation-delay:3s;}
-.dot:nth-child(3){left:75%;animation-delay:6s;}
+
+.particle:nth-child(1){left:15%;animation-delay:0s;}
+.particle:nth-child(2){left:30%;animation-delay:2s;}
+.particle:nth-child(3){left:60%;animation-delay:4s;}
+.particle:nth-child(4){left:80%;animation-delay:6s;}
 
 @keyframes float{
   from{transform:translateY(100vh);}
@@ -65,6 +67,7 @@ nav{
   position:fixed;
   top:20px;
   right:40px;
+  z-index:10;
   font-size:14px;
 }
 
@@ -77,20 +80,31 @@ nav a{
 
 nav a:hover{
   color:var(--blue);
+  transform:translateY(-2px);
 }
 
-/* ===== Layout ===== */
+/* ===== LAYOUT ===== */
 .container{
   max-width:1100px;
   margin:auto;
   padding:140px 30px;
 }
 
-section{margin-bottom:160px;}
+section{
+  margin-bottom:140px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s ease;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
 
 /* ===== HERO ===== */
 .hero h1{
-  font-size:72px;
+  font-size:74px;
   font-weight:800;
   letter-spacing:-1px;
   display:inline-block;
@@ -129,85 +143,78 @@ section{margin-bottom:160px;}
 /* ===== CARD ===== */
 .card{
   background:var(--card);
-  border-radius:28px;
-  padding:60px;
-  box-shadow:0 30px 100px rgba(0,0,0,.08);
+  border-radius:24px;
+  padding:36px;
+  box-shadow:0 20px 60px rgba(0,0,0,.08);
   transition:.4s;
 }
 
 .card:hover{
-  transform:translateY(-6px);
+  transform:translateY(-6px) scale(1.01);
 }
 
 /* ===== MANIFESTO ===== */
 .manifesto h2{
-  font-size:36px;
-  margin-bottom:30px;
+  font-size:28px;
+  margin-bottom:18px;
 }
 
 .manifesto p{
-  font-size:20px;
-  line-height:2;
+  font-size:18px;
+  line-height:1.8;
   color:var(--muted);
 }
 
 /* ===== WORK ===== */
 .work h2{
-  font-size:38px;
-  margin-bottom:30px;
+  font-size:34px;
+  margin-bottom:20px;
 }
 
 .work li{
-  margin-bottom:14px;
-  font-size:19px;
+  margin-bottom:12px;
+  font-size:18px;
   color:var(--muted);
 }
 
 /* ===== CASES ===== */
 .cases h2{
-  font-size:40px;
-  margin-bottom:40px;
+  font-size:36px;
+  margin-bottom:30px;
 }
 
 .case-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
 }
 
 .case{
   background:var(--card);
-  border-radius:24px;
-  padding:36px;
+  border-radius:20px;
+  padding:28px;
   cursor:pointer;
-  transition:.4s;
+  transition:.3s;
 }
 
 .case:hover{
-  transform:scale(1.04);
-  box-shadow:0 25px 80px rgba(0,0,0,.12);
+  transform:translateY(-6px) scale(1.03);
+  box-shadow:0 20px 60px rgba(0,0,0,.12);
 }
 
 .case h3{
   color:var(--blue);
-  margin-bottom:10px;
-}
-
-.case p{
-  color:var(--muted);
 }
 
 .details{
   display:none;
-  margin-top:14px;
-  font-size:15px;
-  line-height:1.6;
+  margin-top:12px;
+  font-size:14px;
 }
 
 /* ===== FOOTER ===== */
 footer{
   text-align:center;
-  padding-bottom:40px;
   font-size:14px;
   color:var(--muted);
 }
@@ -217,9 +224,10 @@ footer{
 <body>
 
 <div class="bg"></div>
-<div class="dot"></div>
-<div class="dot"></div>
-<div class="dot"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
 
 <nav>
 <a href="#">LinkedIn</a>
@@ -238,15 +246,15 @@ FINANCIAL CRIME · TRUST SYSTEMS · HUMAN DECISIONS
 </p>
 
 <p class="hero-text">
-I work inside financial crime systems — transactions, AML, sanctions, abuse — where signals are messy and decisions carry real consequences.
+I work inside financial crime systems — transaction monitoring, AML, sanctions, abuse detection — where signals are messy and decisions carry real consequences.
 </p>
 
 <p class="hero-text">
-I’ve seen investigators waste time on repetitive errors, miss context, and struggle with unclear systems. My focus is fixing that — making workflows cleaner, signals sharper, and decisions faster.
+I’ve seen investigators struggle with repetitive errors, fragmented systems, and lack of context. My work focuses on fixing that — simplifying workflows, improving signal clarity, and reducing decision friction.
 </p>
 
 <p class="hero-text">
-Built alert assignment logic, redesigned SOPs, migrated policies into centralized systems, and worked with stakeholders to push changes into production.
+Built alert assignment tools, redesigned SOPs, centralized policy systems, and worked with stakeholders to push changes into production environments.
 </p>
 
 <p class="hero-text">
@@ -260,20 +268,19 @@ Built alert assignment logic, redesigned SOPs, migrated policies into centralize
 <p>
 Data is not about prediction. It’s about reducing surprise.<br><br>
 Attackers adapt. Systems decay. Decisions still need to scale.<br><br>
-Behavior first. Signals second. Precision always.<br><br>
-Quietly eliminating noise — without breaking what works.
+Behavior first. Signals second. Precision always.
 </p>
 </section>
 
 <section class="work">
 <h2>What I Actually Do</h2>
 <ul>
-<li>Reduce investigator confusion by surfacing the actual story behind alerts</li>
+<li>Break down transaction behavior so investigators see the real story</li>
 <li>Use data analysis to separate noise from real risk</li>
-<li>Design simple visual flows to speed up decision-making</li>
-<li>Fix broken SOPs that don’t work in real environments</li>
-<li>Work with risk & compliance to get changes approved and shipped</li>
-<li>Add automation where it saves human effort</li>
+<li>Design simple visual flows that reduce decision fatigue</li>
+<li>Fix SOPs that fail in real-world usage</li>
+<li>Work with stakeholders to move decisions into production</li>
+<li>Automate where it actually saves human effort</li>
 </ul>
 </section>
 
@@ -286,27 +293,27 @@ Quietly eliminating noise — without breaking what works.
 <h3>Repeated Investigator Errors</h3>
 <p>Same mistakes, same alerts, wasted time.</p>
 <div class="details">
-Investigators misread similar patterns repeatedly. Built alert assignment logic + improved SOP clarity.<br><br>
-Result: reduced repeat errors and faster reviews.<br><br>
-Tools: SQL, workflow queues
+Investigators misread patterns repeatedly. Built alert assignment logic + improved SOP clarity.<br><br>
+Result: fewer errors, faster reviews.<br><br>
+Tools: SQL, workflows
 </div>
 </div>
 
 <div class="case" onclick="toggle(this)">
 <h3>Fragmented Policy System</h3>
-<p>Different regions, different rules, confusion everywhere.</p>
+<p>Different rules across regions created confusion.</p>
 <div class="details">
-Migrated regional policies into centralized system. Got stakeholder approval and drove rollout.<br><br>
-Result: consistent decisions globally.<br><br>
-Tools: Policy docs, stakeholder decks
+Centralized policies, aligned stakeholders, drove rollout.<br><br>
+Result: consistent decision-making globally.<br><br>
+Tools: policy frameworks
 </div>
 </div>
 
 <div class="case" onclick="toggle(this)">
 <h3>Wasted Human Effort</h3>
-<p>People doing mechanical work instead of thinking.</p>
+<p>People doing mechanical tasks instead of thinking.</p>
 <div class="details">
-Identified repetitive workflow steps and reduced them using light automation.<br><br>
+Reduced repetitive workflows via automation.<br><br>
 Result: more focus on real risk decisions.<br><br>
 Tools: process mapping
 </div>
@@ -324,9 +331,21 @@ Tools: process mapping
 
 <script>
 function toggle(el){
-let d=el.querySelector(".details");
-d.style.display=d.style.display==="block"?"none":"block";
+  let d=el.querySelector(".details");
+  d.style.display=d.style.display==="block"?"none":"block";
 }
+
+/* scroll animation */
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add("show");
+    }
+  });
+});
 </script>
 
 </body>
