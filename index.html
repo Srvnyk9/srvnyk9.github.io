@@ -11,8 +11,8 @@
   --green:#22c55e;
   --yellow:#facc15;
   --dark:#0b1220;
-  --bg:#f6faff;
-  --card:rgba(255,255,255,0.92);
+  --bg:#f4f8ff;
+  --card:rgba(255,255,255,0.9);
   --muted:#475569;
 }
 
@@ -25,54 +25,52 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== BACKGROUND ===== */
+/* ===== LIVE BACKGROUND SYSTEM ===== */
 .bg{
   position:fixed;
   inset:0;
-  z-index:-2;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(37,99,235,.15), transparent 50%),
-    radial-gradient(circle at 80% 30%, rgba(34,197,94,.12), transparent 50%),
-    radial-gradient(circle at 60% 80%, rgba(250,204,21,.12), transparent 50%);
-  animation:bgMove 18s ease-in-out infinite alternate;
+  z-index:-3;
+  background:radial-gradient(circle at 30% 30%, rgba(37,99,235,.15), transparent 60%);
 }
 
-@keyframes bgMove{
-  100%{transform:translateY(-60px);}
-}
-
-/* grid */
-.grid{
+/* flowing lines */
+.line{
   position:fixed;
-  inset:0;
-  z-index:-1;
-  background-image:
-    linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,.04) 1px, transparent 1px);
-  background-size:80px 80px;
-  animation:gridMove 20s linear infinite;
+  width:2px;
+  height:200%;
+  background:linear-gradient(to bottom, transparent, var(--blue), transparent);
+  opacity:.15;
+  animation:flow 10s linear infinite;
 }
 
-@keyframes gridMove{
-  100%{transform:translateY(80px);}
+.line:nth-child(1){left:20%;animation-duration:8s;}
+.line:nth-child(2){left:40%;animation-duration:12s;}
+.line:nth-child(3){left:60%;animation-duration:10s;}
+.line:nth-child(4){left:80%;animation-duration:14s;}
+
+@keyframes flow{
+  from{transform:translateY(-100%);}
+  to{transform:translateY(100%);}
 }
 
-/* particles */
-.dot{
+/* moving nodes */
+.node{
   position:fixed;
-  width:4px;height:4px;
-  background:var(--blue);
+  width:6px;height:6px;
+  background:var(--green);
   border-radius:50%;
-  opacity:.2;
-  animation:float 10s linear infinite;
+  opacity:.4;
+  animation:moveNode 12s linear infinite;
 }
-.dot:nth-child(1){left:20%;animation-delay:0s;}
-.dot:nth-child(2){left:50%;animation-delay:2s;}
-.dot:nth-child(3){left:80%;animation-delay:4s;}
 
-@keyframes float{
+.node:nth-child(5){left:10%;animation-delay:0s;}
+.node:nth-child(6){left:30%;animation-delay:3s;}
+.node:nth-child(7){left:70%;animation-delay:6s;}
+.node:nth-child(8){left:85%;animation-delay:9s;}
+
+@keyframes moveNode{
   from{transform:translateY(100vh);}
-  to{transform:translateY(-20vh);}
+  to{transform:translateY(-10vh);}
 }
 
 /* ===== NAV ===== */
@@ -88,13 +86,9 @@ nav a{
   margin-left:18px;
   text-decoration:none;
   color:var(--muted);
-  transition:.3s;
 }
 
-nav a:hover{
-  color:var(--blue);
-  transform:translateY(-2px);
-}
+nav a:hover{color:var(--blue);}
 
 /* ===== LAYOUT ===== */
 .container{
@@ -117,24 +111,12 @@ section.show{
 
 /* ===== HERO ===== */
 .hero h1{
-  font-size:78px;
+  font-size:80px;
   font-weight:800;
-  letter-spacing:-1px;
-  position:relative;
-}
-
-.hero h1::after{
-  content:"";
-  position:absolute;
-  bottom:-10px;
-  left:0;
-  width:100%;
-  height:4px;
-  background:linear-gradient(90deg,var(--blue),var(--green),var(--yellow));
 }
 
 .tagline{
-  margin-top:12px;
+  margin-top:10px;
   font-size:14px;
   letter-spacing:2px;
   color:var(--muted);
@@ -146,39 +128,9 @@ section.show{
   color:var(--muted);
 }
 
-/* ===== METRICS ===== */
-.metrics{
-  display:flex;
-  gap:40px;
-  margin-top:40px;
-}
-
-.metric{
-  font-size:32px;
-  font-weight:700;
-  color:var(--blue);
-}
-
-.metric span{
-  display:block;
-  font-size:14px;
-  color:var(--muted);
-}
-
 /* ===== WORK ===== */
 .work h2{font-size:30px;margin-bottom:20px;}
 .work li{margin-bottom:10px;font-size:18px;color:var(--muted);}
-
-/* ===== BARS ===== */
-.bar{
-  margin-top:20px;
-}
-.bar div{
-  height:6px;
-  background:linear-gradient(90deg,var(--blue),var(--green));
-  width:0;
-  transition:1.5s;
-}
 
 /* ===== CASES ===== */
 .case-grid{
@@ -214,10 +166,16 @@ footer{
 <body>
 
 <div class="bg"></div>
-<div class="grid"></div>
-<div class="dot"></div>
-<div class="dot"></div>
-<div class="dot"></div>
+
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"></div>
+
+<div class="node"></div>
+<div class="node"></div>
+<div class="node"></div>
+<div class="node"></div>
 
 <nav>
 <a href="#">LinkedIn</a>
@@ -231,16 +189,17 @@ footer{
 <section class="hero">
 <h1>Sourav Nayak</h1>
 
-<p class="tagline">FINANCIAL CRIME · TRUST SYSTEMS · HUMAN DECISIONS</p>
+<p class="tagline">
+FINANCIAL CRIME · TRUST SYSTEMS · HUMAN DECISIONS
+</p>
 
-<p class="hero-text">I fix noisy financial crime systems.</p>
-<p class="hero-text">Less repetition. Better signals. Faster decisions.</p>
+<p class="hero-text">
+I fix noisy financial crime systems.
+</p>
 
-<div class="metrics">
-<div class="metric" data-target="30">0<span>% less manual effort</span></div>
-<div class="metric" data-target="40">0<span>% faster reviews</span></div>
-<div class="metric" data-target="25">0<span>% error reduction</span></div>
-</div>
+<p class="hero-text">
+Less repetition. Better signals. Faster decisions.
+</p>
 
 </section>
 
@@ -249,15 +208,11 @@ footer{
 <ul>
 <li>Reduce investigator error and repetitive workflows</li>
 <li>Improve signal clarity using data analysis</li>
-<li>Design simple decision flows and visual summaries</li>
-<li>Fix SOPs that don’t work in real environments</li>
+<li>Design decision flows that actually work in production</li>
+<li>Fix SOPs used in real investigations</li>
 <li>Work with stakeholders to push changes live</li>
-<li>Add automation where it saves time</li>
+<li>Add automation where it saves real time</li>
 </ul>
-
-<div class="bar"><div style="width:90%"></div></div>
-<div class="bar"><div style="width:80%"></div></div>
-
 </section>
 
 <section class="cases">
@@ -269,15 +224,15 @@ footer{
 <h3>Repeated Errors</h3>
 <p>Same alerts. Same mistakes.</p>
 <div class="details">
-Built alert assignment + SOP clarity → fewer errors.
+Improved assignment logic + SOP clarity → reduced repeat errors.
 </div>
 </div>
 
 <div class="case" onclick="toggle(this)">
 <h3>Policy Chaos</h3>
-<p>Different regions, different rules.</p>
+<p>Fragmented rules across regions.</p>
 <div class="details">
-Centralized policies → consistent decisions.
+Centralized policies → consistent global decisions.
 </div>
 </div>
 
@@ -285,7 +240,7 @@ Centralized policies → consistent decisions.
 <h3>Wasted Effort</h3>
 <p>Humans doing mechanical work.</p>
 <div class="details">
-Removed repetitive workflows → faster decision making.
+Removed repetitive steps → faster investigations.
 </div>
 </div>
 
@@ -305,32 +260,13 @@ function toggle(el){
   d.style.display=d.style.display==="block"?"none":"block";
 }
 
-/* scroll reveal */
 const sections=document.querySelectorAll("section");
+
 window.addEventListener("scroll",()=>{
 sections.forEach(sec=>{
 if(sec.getBoundingClientRect().top<window.innerHeight-100){
 sec.classList.add("show");
 }});
-});
-
-/* counter animation */
-const counters=document.querySelectorAll(".metric");
-
-counters.forEach(counter=>{
-let update=()=>{
-let target=+counter.getAttribute("data-target");
-let count=+counter.innerText;
-let inc=target/40;
-
-if(count<target){
-counter.innerText=Math.ceil(count+inc);
-setTimeout(update,40);
-}else{
-counter.innerText=target;
-}
-};
-update();
 });
 </script>
 
