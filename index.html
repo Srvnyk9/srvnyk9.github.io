@@ -25,7 +25,7 @@ color:var(--dark);
 overflow-x:hidden;
 }
 
-/* ===== CANVAS BACKGROUND ===== */
+/* ===== CANVAS NETWORK ===== */
 canvas{
 position:fixed;
 top:0;
@@ -33,7 +33,7 @@ left:0;
 z-index:-5;
 }
 
-/* ===== GRADIENT GLOW ===== */
+/* ===== GLOW BACKGROUND ===== */
 .bg{
 position:fixed;
 inset:0;
@@ -86,7 +86,7 @@ transform:translateY(0);
 
 /* ===== HERO ===== */
 .hero h1{
-font-size:82px;
+font-size:80px;
 font-weight:800;
 }
 
@@ -111,19 +111,14 @@ border-left:4px solid var(--blue);
 background:rgba(255,255,255,0.6);
 }
 
-/* ===== WORK ===== */
-.work li{
-margin-bottom:10px;
-font-size:18px;
-}
-
-/* ===== CASES ===== */
+/* ===== GRID ===== */
 .case-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 }
 
+/* ===== CARDS ===== */
 .case{
 background:var(--card);
 padding:24px;
@@ -143,6 +138,12 @@ margin-top:10px;
 font-size:14px;
 }
 
+/* ===== HEADINGS ===== */
+h2{
+font-size:32px;
+margin-bottom:30px;
+}
+
 /* ===== FOOTER ===== */
 footer{
 text-align:center;
@@ -158,14 +159,15 @@ color:var(--muted);
 <div class="bg"></div>
 
 <nav>
-<a href="#">LinkedIn</a>
-<a href="#">Email</a>
-<a href="#">GitHub</a>
-<a href="#">Resume</a>
+<a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>
+<a href="mailto:YOUR_EMAIL">Email</a>
+<a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
+<a href="YOUR_RESUME_LINK" target="_blank">Resume</a>
 </nav>
 
 <div class="container">
 
+<!-- HERO -->
 <section class="hero">
 <h1>Sourav Nayak</h1>
 
@@ -178,57 +180,132 @@ I work inside systems where decisions stop fraud — or let it through.
 </p>
 
 <p class="hero-text">
-My focus is simple: reduce noise, improve signals, and make decisions faster and clearer.
+My focus: reduce noise, improve signals, and make decisions faster.
 </p>
 
 <div class="insight">
 Attackers adapt. Signals decay.  
-Systems must still make the right call — at scale.
+Systems still need to make the right call — at scale.
 </div>
-
 </section>
 
-<section class="work">
-<h2>What Happens In My Work</h2>
+<!-- WORK -->
+<section>
+<h2>What I Do</h2>
 <ul>
-<li>Investigators missing context → I surface the full story</li>
-<li>Too many false positives → I refine signals</li>
-<li>Slow workflows → I simplify decision paths</li>
-<li>Confusing policies → I align and restructure</li>
-<li>Stakeholder conflicts → I translate risk into decisions</li>
+<li>Reduce investigator errors and repetitive workflows</li>
+<li>Improve signal clarity using data analysis</li>
+<li>Design decision flows used in real investigations</li>
+<li>Fix SOPs that fail in production</li>
+<li>Work with stakeholders to push decisions live</li>
+<li>Add automation where it saves real time</li>
 </ul>
 </section>
 
-<section class="cases">
-<h2>Where This Shows Up</h2>
+<!-- CASES -->
+<section>
+<h2>Case Studies</h2>
 
 <div class="case-grid">
 
 <div class="case" onclick="toggle(this)">
 <h3>Alert Fatigue</h3>
-<p>Too many alerts. Not enough clarity.</p>
+<p>Too many alerts. Low clarity.</p>
 <div class="details">
-Improved assignment + context layers → faster investigations.
+Improved alert assignment and added context → faster decisions.
 </div>
 </div>
 
 <div class="case" onclick="toggle(this)">
-<h3>Policy Chaos</h3>
-<p>Different rules across regions.</p>
+<h3>Policy Confusion</h3>
+<p>Different regions, different rules.</p>
 <div class="details">
-Centralized policies → consistent enforcement decisions.
+Centralized policy system → consistent enforcement.
 </div>
 </div>
 
 <div class="case" onclick="toggle(this)">
-<h3>Decision Friction</h3>
-<p>Too many steps. Low clarity.</p>
+<h3>Workflow Inefficiency</h3>
+<p>Too many manual steps.</p>
 <div class="details">
-Reduced workflow + added visual logic → better calls.
+Reduced redundant steps → improved investigator speed.
 </div>
 </div>
 
 </div>
+</section>
+
+<!-- IMPACT -->
+<section>
+<h2>Impact</h2>
+
+<div class="case-grid">
+
+<div class="case">
+<h3>Reduced Review Time</h3>
+<p>Simplified workflows helped investigators process cases faster.</p>
+</div>
+
+<div class="case">
+<h3>Lower Error Rates</h3>
+<p>Improved clarity reduced repeated mistakes.</p>
+</div>
+
+<div class="case">
+<h3>Better Decision Consistency</h3>
+<p>Aligned policies improved decision outcomes across teams.</p>
+</div>
+
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section>
+<h2>Projects</h2>
+
+<div class="case-grid">
+
+<div class="case" onclick="toggle(this)">
+<h3>Fraud Pattern Detection</h3>
+<p>Behavior-based anomaly detection.</p>
+<div class="details">
+Used SQL to analyze transaction patterns and detect anomalies.
+</div>
+</div>
+
+<div class="case" onclick="toggle(this)">
+<h3>Risk Dashboard</h3>
+<p>Visual decision support.</p>
+<div class="details">
+Built dashboard to summarize alerts and risk signals.
+</div>
+</div>
+
+<div class="case" onclick="toggle(this)">
+<h3>Workflow Optimization</h3>
+<p>Reduced investigation friction.</p>
+<div class="details">
+Mapped and improved investigation processes.
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+<section>
+<h2>Contact</h2>
+
+<p style="font-size:18px;">
+Open to Financial Crime, Trust & Safety, and Risk roles.
+</p>
+
+<p style="margin-top:20px;">
+<a href="#">LinkedIn</a> · 
+<a href="#">Email</a> · 
+<a href="#">GitHub</a> · 
+<a href="#">Resume</a>
+</p>
 
 </section>
 
@@ -239,13 +316,12 @@ Reduced workflow + added visual logic → better calls.
 </footer>
 
 <script>
-/* toggle */
 function toggle(el){
 let d=el.querySelector(".details");
 d.style.display=d.style.display==="block"?"none":"block";
 }
 
-/* scroll reveal */
+/* scroll animation */
 const sections=document.querySelectorAll("section");
 window.addEventListener("scroll",()=>{
 sections.forEach(sec=>{
@@ -254,7 +330,7 @@ sec.classList.add("show");
 }});
 });
 
-/* ===== NETWORK CANVAS ===== */
+/* network animation */
 const canvas=document.getElementById("network");
 const ctx=canvas.getContext("2d");
 
@@ -263,12 +339,12 @@ canvas.height=window.innerHeight;
 
 let nodes=[];
 
-for(let i=0;i<80;i++){
+for(let i=0;i<70;i++){
 nodes.push({
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
-vx:(Math.random()-0.5)*1,
-vy:(Math.random()-0.5)*1
+vx:(Math.random()-0.5),
+vy:(Math.random()-0.5)
 });
 }
 
@@ -305,7 +381,6 @@ ctx.stroke();
 }
 });
 
-/* mouse interaction */
 let d=Math.hypot(n.x-mouse.x,n.y-mouse.y);
 if(d<150){
 ctx.beginPath();
