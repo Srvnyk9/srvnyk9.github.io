@@ -11,7 +11,7 @@
   --green:#22c55e;
   --yellow:#facc15;
   --dark:#0b1220;
-  --bg:#f4f8ff;
+  --bg:#f6faff;
   --card:rgba(255,255,255,0.92);
   --muted:#475569;
 }
@@ -31,31 +31,44 @@ body{
   inset:0;
   z-index:-2;
   background:
-  radial-gradient(circle at 20% 20%, rgba(37,99,235,.15), transparent 50%),
-  radial-gradient(circle at 80% 30%, rgba(34,197,94,.12), transparent 50%),
-  radial-gradient(circle at 50% 90%, rgba(250,204,21,.12), transparent 50%);
-  animation:bgMove 20s ease-in-out infinite alternate;
+    radial-gradient(circle at 20% 20%, rgba(37,99,235,.15), transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(34,197,94,.12), transparent 50%),
+    radial-gradient(circle at 60% 80%, rgba(250,204,21,.12), transparent 50%);
+  animation:bgMove 18s ease-in-out infinite alternate;
 }
 
 @keyframes bgMove{
-  0%{transform:translateY(0);}
   100%{transform:translateY(-60px);}
 }
 
+/* grid */
+.grid{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background-image:
+    linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.04) 1px, transparent 1px);
+  background-size:80px 80px;
+  animation:gridMove 20s linear infinite;
+}
+
+@keyframes gridMove{
+  100%{transform:translateY(80px);}
+}
+
 /* particles */
-.particle{
+.dot{
   position:fixed;
   width:4px;height:4px;
   background:var(--blue);
   border-radius:50%;
   opacity:.2;
-  animation:float 12s linear infinite;
+  animation:float 10s linear infinite;
 }
-
-.particle:nth-child(1){left:15%;animation-delay:0s;}
-.particle:nth-child(2){left:30%;animation-delay:2s;}
-.particle:nth-child(3){left:60%;animation-delay:4s;}
-.particle:nth-child(4){left:80%;animation-delay:6s;}
+.dot:nth-child(1){left:20%;animation-delay:0s;}
+.dot:nth-child(2){left:50%;animation-delay:2s;}
+.dot:nth-child(3){left:80%;animation-delay:4s;}
 
 @keyframes float{
   from{transform:translateY(100vh);}
@@ -85,7 +98,7 @@ nav a:hover{
 
 /* ===== LAYOUT ===== */
 .container{
-  max-width:1100px;
+  max-width:1000px;
   margin:auto;
   padding:140px 30px;
 }
@@ -104,17 +117,16 @@ section.show{
 
 /* ===== HERO ===== */
 .hero h1{
-  font-size:74px;
+  font-size:78px;
   font-weight:800;
   letter-spacing:-1px;
-  display:inline-block;
   position:relative;
 }
 
 .hero h1::after{
   content:"";
   position:absolute;
-  bottom:-8px;
+  bottom:-10px;
   left:0;
   width:100%;
   height:4px;
@@ -122,95 +134,73 @@ section.show{
 }
 
 .tagline{
-  margin-top:10px;
+  margin-top:12px;
   font-size:14px;
   letter-spacing:2px;
   color:var(--muted);
 }
 
 .hero-text{
-  margin-top:24px;
-  font-size:22px;
-  line-height:1.9;
+  margin-top:20px;
+  font-size:24px;
   color:var(--muted);
-  max-width:800px;
 }
 
-.hero-text strong{
-  color:var(--dark);
+/* ===== METRICS ===== */
+.metrics{
+  display:flex;
+  gap:40px;
+  margin-top:40px;
 }
 
-/* ===== CARD ===== */
-.card{
-  background:var(--card);
-  border-radius:24px;
-  padding:36px;
-  box-shadow:0 20px 60px rgba(0,0,0,.08);
-  transition:.4s;
+.metric{
+  font-size:32px;
+  font-weight:700;
+  color:var(--blue);
 }
 
-.card:hover{
-  transform:translateY(-6px) scale(1.01);
-}
-
-/* ===== MANIFESTO ===== */
-.manifesto h2{
-  font-size:28px;
-  margin-bottom:18px;
-}
-
-.manifesto p{
-  font-size:18px;
-  line-height:1.8;
+.metric span{
+  display:block;
+  font-size:14px;
   color:var(--muted);
 }
 
 /* ===== WORK ===== */
-.work h2{
-  font-size:34px;
-  margin-bottom:20px;
-}
+.work h2{font-size:30px;margin-bottom:20px;}
+.work li{margin-bottom:10px;font-size:18px;color:var(--muted);}
 
-.work li{
-  margin-bottom:12px;
-  font-size:18px;
-  color:var(--muted);
+/* ===== BARS ===== */
+.bar{
+  margin-top:20px;
+}
+.bar div{
+  height:6px;
+  background:linear-gradient(90deg,var(--blue),var(--green));
+  width:0;
+  transition:1.5s;
 }
 
 /* ===== CASES ===== */
-.cases h2{
-  font-size:36px;
-  margin-bottom:30px;
-}
-
 .case-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:24px;
+  gap:20px;
 }
 
 .case{
   background:var(--card);
+  padding:24px;
   border-radius:20px;
-  padding:28px;
   cursor:pointer;
   transition:.3s;
 }
 
 .case:hover{
   transform:translateY(-6px) scale(1.03);
-  box-shadow:0 20px 60px rgba(0,0,0,.12);
+  box-shadow:0 20px 60px rgba(0,0,0,.1);
 }
 
-.case h3{
-  color:var(--blue);
-}
-
-.details{
-  display:none;
-  margin-top:12px;
-  font-size:14px;
-}
+.details{display:none;margin-top:10px;font-size:14px;}
 
 /* ===== FOOTER ===== */
 footer{
@@ -224,10 +214,10 @@ footer{
 <body>
 
 <div class="bg"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
+<div class="grid"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
 
 <nav>
 <a href="#">LinkedIn</a>
@@ -241,81 +231,61 @@ footer{
 <section class="hero">
 <h1>Sourav Nayak</h1>
 
-<p class="tagline">
-FINANCIAL CRIME · TRUST SYSTEMS · HUMAN DECISIONS
-</p>
+<p class="tagline">FINANCIAL CRIME · TRUST SYSTEMS · HUMAN DECISIONS</p>
 
-<p class="hero-text">
-I work inside financial crime systems — transaction monitoring, AML, sanctions, abuse detection — where signals are messy and decisions carry real consequences.
-</p>
+<p class="hero-text">I fix noisy financial crime systems.</p>
+<p class="hero-text">Less repetition. Better signals. Faster decisions.</p>
 
-<p class="hero-text">
-I’ve seen investigators struggle with repetitive errors, fragmented systems, and lack of context. My work focuses on fixing that — simplifying workflows, improving signal clarity, and reducing decision friction.
-</p>
+<div class="metrics">
+<div class="metric" data-target="30">0<span>% less manual effort</span></div>
+<div class="metric" data-target="40">0<span>% faster reviews</span></div>
+<div class="metric" data-target="25">0<span>% error reduction</span></div>
+</div>
 
-<p class="hero-text">
-Built alert assignment tools, redesigned SOPs, centralized policy systems, and worked with stakeholders to push changes into production environments.
-</p>
-
-<p class="hero-text">
-<strong>Not just analyzing risk — fixing how decisions are actually made.</strong>
-</p>
-
-</section>
-
-<section class="card manifesto">
-<h2>My Take</h2>
-<p>
-Data is not about prediction. It’s about reducing surprise.<br><br>
-Attackers adapt. Systems decay. Decisions still need to scale.<br><br>
-Behavior first. Signals second. Precision always.
-</p>
 </section>
 
 <section class="work">
-<h2>What I Actually Do</h2>
+<h2>What I Do</h2>
 <ul>
-<li>Break down transaction behavior so investigators see the real story</li>
-<li>Use data analysis to separate noise from real risk</li>
-<li>Design simple visual flows that reduce decision fatigue</li>
-<li>Fix SOPs that fail in real-world usage</li>
-<li>Work with stakeholders to move decisions into production</li>
-<li>Automate where it actually saves human effort</li>
+<li>Reduce investigator error and repetitive workflows</li>
+<li>Improve signal clarity using data analysis</li>
+<li>Design simple decision flows and visual summaries</li>
+<li>Fix SOPs that don’t work in real environments</li>
+<li>Work with stakeholders to push changes live</li>
+<li>Add automation where it saves time</li>
 </ul>
+
+<div class="bar"><div style="width:90%"></div></div>
+<div class="bar"><div style="width:80%"></div></div>
+
 </section>
 
 <section class="cases">
-<h2>Real Problems I Solved</h2>
+<h2>Selected Work</h2>
 
 <div class="case-grid">
 
 <div class="case" onclick="toggle(this)">
-<h3>Repeated Investigator Errors</h3>
-<p>Same mistakes, same alerts, wasted time.</p>
+<h3>Repeated Errors</h3>
+<p>Same alerts. Same mistakes.</p>
 <div class="details">
-Investigators misread patterns repeatedly. Built alert assignment logic + improved SOP clarity.<br><br>
-Result: fewer errors, faster reviews.<br><br>
-Tools: SQL, workflows
+Built alert assignment + SOP clarity → fewer errors.
 </div>
 </div>
 
 <div class="case" onclick="toggle(this)">
-<h3>Fragmented Policy System</h3>
-<p>Different rules across regions created confusion.</p>
+<h3>Policy Chaos</h3>
+<p>Different regions, different rules.</p>
 <div class="details">
-Centralized policies, aligned stakeholders, drove rollout.<br><br>
-Result: consistent decision-making globally.<br><br>
-Tools: policy frameworks
+Centralized policies → consistent decisions.
 </div>
 </div>
 
 <div class="case" onclick="toggle(this)">
-<h3>Wasted Human Effort</h3>
-<p>People doing mechanical tasks instead of thinking.</p>
+<h3>Wasted Effort</h3>
+<p>Humans doing mechanical work.</p>
 <div class="details">
-Reduced repetitive workflows via automation.<br><br>
-Result: more focus on real risk decisions.<br><br>
-Tools: process mapping
+Removed repetitive workflows → faster decision making.
 </div>
 </div>
 
@@ -335,16 +305,32 @@ function toggle(el){
   d.style.display=d.style.display==="block"?"none":"block";
 }
 
-/* scroll animation */
-const sections = document.querySelectorAll("section");
+/* scroll reveal */
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<window.innerHeight-100){
+sec.classList.add("show");
+}});
+});
 
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      sec.classList.add("show");
-    }
-  });
+/* counter animation */
+const counters=document.querySelectorAll(".metric");
+
+counters.forEach(counter=>{
+let update=()=>{
+let target=+counter.getAttribute("data-target");
+let count=+counter.innerText;
+let inc=target/40;
+
+if(count<target){
+counter.innerText=Math.ceil(count+inc);
+setTimeout(update,40);
+}else{
+counter.innerText=target;
+}
+};
+update();
 });
 </script>
 
