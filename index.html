@@ -6,176 +6,156 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root {
-  --blue:#2563eb;
-  --green:#22c55e;
-  --yellow:#facc15;
-  --dark:#0b1220;
-  --bg:#f4f8ff;
-  --card:rgba(255,255,255,0.9);
-  --muted:#475569;
+:root{
+--blue:#2563eb;
+--green:#22c55e;
+--yellow:#facc15;
+--dark:#0b1220;
+--bg:#f3f7ff;
+--card:rgba(255,255,255,0.9);
+--muted:#475569;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family:system-ui;
-  background:var(--bg);
-  color:var(--dark);
-  overflow-x:hidden;
+font-family:system-ui;
+background:var(--bg);
+color:var(--dark);
+overflow-x:hidden;
 }
 
-/* ===== LIVE BACKGROUND SYSTEM ===== */
+/* ===== CANVAS BACKGROUND ===== */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-5;
+}
+
+/* ===== GRADIENT GLOW ===== */
 .bg{
-  position:fixed;
-  inset:0;
-  z-index:-3;
-  background:radial-gradient(circle at 30% 30%, rgba(37,99,235,.15), transparent 60%);
+position:fixed;
+inset:0;
+z-index:-4;
+background:
+radial-gradient(circle at 20% 30%, rgba(37,99,235,.2), transparent 60%),
+radial-gradient(circle at 80% 20%, rgba(34,197,94,.15), transparent 60%);
+animation:bgMove 10s ease-in-out infinite alternate;
 }
 
-/* flowing lines */
-.line{
-  position:fixed;
-  width:2px;
-  height:200%;
-  background:linear-gradient(to bottom, transparent, var(--blue), transparent);
-  opacity:.15;
-  animation:flow 10s linear infinite;
-}
-
-.line:nth-child(1){left:20%;animation-duration:8s;}
-.line:nth-child(2){left:40%;animation-duration:12s;}
-.line:nth-child(3){left:60%;animation-duration:10s;}
-.line:nth-child(4){left:80%;animation-duration:14s;}
-
-@keyframes flow{
-  from{transform:translateY(-100%);}
-  to{transform:translateY(100%);}
-}
-
-/* moving nodes */
-.node{
-  position:fixed;
-  width:6px;height:6px;
-  background:var(--green);
-  border-radius:50%;
-  opacity:.4;
-  animation:moveNode 12s linear infinite;
-}
-
-.node:nth-child(5){left:10%;animation-delay:0s;}
-.node:nth-child(6){left:30%;animation-delay:3s;}
-.node:nth-child(7){left:70%;animation-delay:6s;}
-.node:nth-child(8){left:85%;animation-delay:9s;}
-
-@keyframes moveNode{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
+@keyframes bgMove{
+100%{transform:translateY(-80px);}
 }
 
 /* ===== NAV ===== */
 nav{
-  position:fixed;
-  top:20px;
-  right:40px;
-  z-index:10;
-  font-size:14px;
+position:fixed;
+top:20px;
+right:40px;
+z-index:10;
 }
 
 nav a{
-  margin-left:18px;
-  text-decoration:none;
-  color:var(--muted);
+margin-left:20px;
+text-decoration:none;
+color:var(--muted);
+font-size:14px;
 }
 
 nav a:hover{color:var(--blue);}
 
 /* ===== LAYOUT ===== */
 .container{
-  max-width:1000px;
-  margin:auto;
-  padding:140px 30px;
+max-width:1100px;
+margin:auto;
+padding:140px 30px;
 }
 
 section{
-  margin-bottom:140px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:.8s ease;
+margin-bottom:140px;
+opacity:0;
+transform:translateY(40px);
+transition:.8s;
 }
 
 section.show{
-  opacity:1;
-  transform:translateY(0);
+opacity:1;
+transform:translateY(0);
 }
 
 /* ===== HERO ===== */
 .hero h1{
-  font-size:80px;
-  font-weight:800;
+font-size:82px;
+font-weight:800;
 }
 
 .tagline{
-  margin-top:10px;
-  font-size:14px;
-  letter-spacing:2px;
-  color:var(--muted);
+margin-top:10px;
+font-size:14px;
+letter-spacing:2px;
+color:var(--muted);
 }
 
 .hero-text{
-  margin-top:20px;
-  font-size:24px;
-  color:var(--muted);
+margin-top:20px;
+font-size:24px;
+color:var(--muted);
+}
+
+/* ===== INSIGHT ===== */
+.insight{
+margin-top:30px;
+padding:20px;
+border-left:4px solid var(--blue);
+background:rgba(255,255,255,0.6);
 }
 
 /* ===== WORK ===== */
-.work h2{font-size:30px;margin-bottom:20px;}
-.work li{margin-bottom:10px;font-size:18px;color:var(--muted);}
+.work li{
+margin-bottom:10px;
+font-size:18px;
+}
 
 /* ===== CASES ===== */
 .case-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
 }
 
 .case{
-  background:var(--card);
-  padding:24px;
-  border-radius:20px;
-  cursor:pointer;
-  transition:.3s;
+background:var(--card);
+padding:24px;
+border-radius:20px;
+cursor:pointer;
+transition:.3s;
 }
 
 .case:hover{
-  transform:translateY(-6px) scale(1.03);
-  box-shadow:0 20px 60px rgba(0,0,0,.1);
+transform:translateY(-8px) scale(1.04);
+box-shadow:0 20px 60px rgba(0,0,0,.15);
 }
 
-.details{display:none;margin-top:10px;font-size:14px;}
+.details{
+display:none;
+margin-top:10px;
+font-size:14px;
+}
 
 /* ===== FOOTER ===== */
 footer{
-  text-align:center;
-  font-size:14px;
-  color:var(--muted);
+text-align:center;
+font-size:14px;
+color:var(--muted);
 }
 </style>
 </head>
 
 <body>
 
+<canvas id="network"></canvas>
 <div class="bg"></div>
-
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
-
-<div class="node"></div>
-<div class="node"></div>
-<div class="node"></div>
-<div class="node"></div>
 
 <nav>
 <a href="#">LinkedIn</a>
@@ -194,53 +174,57 @@ FINANCIAL CRIME · TRUST SYSTEMS · HUMAN DECISIONS
 </p>
 
 <p class="hero-text">
-I fix noisy financial crime systems.
+I work inside systems where decisions stop fraud — or let it through.
 </p>
 
 <p class="hero-text">
-Less repetition. Better signals. Faster decisions.
+My focus is simple: reduce noise, improve signals, and make decisions faster and clearer.
 </p>
+
+<div class="insight">
+Attackers adapt. Signals decay.  
+Systems must still make the right call — at scale.
+</div>
 
 </section>
 
 <section class="work">
-<h2>What I Do</h2>
+<h2>What Happens In My Work</h2>
 <ul>
-<li>Reduce investigator error and repetitive workflows</li>
-<li>Improve signal clarity using data analysis</li>
-<li>Design decision flows that actually work in production</li>
-<li>Fix SOPs used in real investigations</li>
-<li>Work with stakeholders to push changes live</li>
-<li>Add automation where it saves real time</li>
+<li>Investigators missing context → I surface the full story</li>
+<li>Too many false positives → I refine signals</li>
+<li>Slow workflows → I simplify decision paths</li>
+<li>Confusing policies → I align and restructure</li>
+<li>Stakeholder conflicts → I translate risk into decisions</li>
 </ul>
 </section>
 
 <section class="cases">
-<h2>Selected Work</h2>
+<h2>Where This Shows Up</h2>
 
 <div class="case-grid">
 
 <div class="case" onclick="toggle(this)">
-<h3>Repeated Errors</h3>
-<p>Same alerts. Same mistakes.</p>
+<h3>Alert Fatigue</h3>
+<p>Too many alerts. Not enough clarity.</p>
 <div class="details">
-Improved assignment logic + SOP clarity → reduced repeat errors.
+Improved assignment + context layers → faster investigations.
 </div>
 </div>
 
 <div class="case" onclick="toggle(this)">
 <h3>Policy Chaos</h3>
-<p>Fragmented rules across regions.</p>
+<p>Different rules across regions.</p>
 <div class="details">
-Centralized policies → consistent global decisions.
+Centralized policies → consistent enforcement decisions.
 </div>
 </div>
 
 <div class="case" onclick="toggle(this)">
-<h3>Wasted Effort</h3>
-<p>Humans doing mechanical work.</p>
+<h3>Decision Friction</h3>
+<p>Too many steps. Low clarity.</p>
 <div class="details">
-Removed repetitive steps → faster investigations.
+Reduced workflow + added visual logic → better calls.
 </div>
 </div>
 
@@ -255,19 +239,87 @@ Removed repetitive steps → faster investigations.
 </footer>
 
 <script>
+/* toggle */
 function toggle(el){
-  let d=el.querySelector(".details");
-  d.style.display=d.style.display==="block"?"none":"block";
+let d=el.querySelector(".details");
+d.style.display=d.style.display==="block"?"none":"block";
 }
 
+/* scroll reveal */
 const sections=document.querySelectorAll("section");
-
 window.addEventListener("scroll",()=>{
 sections.forEach(sec=>{
 if(sec.getBoundingClientRect().top<window.innerHeight-100){
 sec.classList.add("show");
 }});
 });
+
+/* ===== NETWORK CANVAS ===== */
+const canvas=document.getElementById("network");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let nodes=[];
+
+for(let i=0;i<80;i++){
+nodes.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*1,
+vy:(Math.random()-0.5)*1
+});
+}
+
+let mouse={x:null,y:null};
+
+window.addEventListener("mousemove",e=>{
+mouse.x=e.x;
+mouse.y=e.y;
+});
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+nodes.forEach(n=>{
+n.x+=n.vx;
+n.y+=n.vy;
+
+if(n.x<0||n.x>canvas.width)n.vx*=-1;
+if(n.y<0||n.y>canvas.height)n.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(n.x,n.y,2,0,Math.PI*2);
+ctx.fillStyle="rgba(37,99,235,0.4)";
+ctx.fill();
+
+nodes.forEach(m=>{
+let dist=Math.hypot(n.x-m.x,n.y-m.y);
+if(dist<120){
+ctx.beginPath();
+ctx.moveTo(n.x,n.y);
+ctx.lineTo(m.x,m.y);
+ctx.strokeStyle="rgba(37,99,235,0.1)";
+ctx.stroke();
+}
+});
+
+/* mouse interaction */
+let d=Math.hypot(n.x-mouse.x,n.y-mouse.y);
+if(d<150){
+ctx.beginPath();
+ctx.moveTo(n.x,n.y);
+ctx.lineTo(mouse.x,mouse.y);
+ctx.strokeStyle="rgba(34,197,94,0.3)";
+ctx.stroke();
+}
+});
+
+requestAnimationFrame(draw);
+}
+
+draw();
 </script>
 
 </body>
